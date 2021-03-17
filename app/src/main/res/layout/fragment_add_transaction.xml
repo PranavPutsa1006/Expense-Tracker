@@ -1,0 +1,135 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/activity_main_background"
+    tools:context="com.example.savss.expensetracker.AddTransactionFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:id="@+id/income_expense_holder">
+        <Button
+            android:id="@+id/income_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/income_and_expense_buttons"
+            android:textColor="@color/BackgroundWhiteColor"
+            android:text="INCOME"/>
+        <Button
+            android:id="@+id/expense_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/income_and_expense_buttons"
+            android:textColor="@color/BackgroundWhiteColor"
+            android:text="EXPENSE"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/valueAndSignHolder"
+        android:layout_below="@id/income_expense_holder"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/valueDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="5dp"
+            android:inputType="numberDecimal"
+            android:text="0.0"
+            android:textSize="80dp"
+            android:textColor="@color/BackgroundWhiteColor" />
+        <TextView
+            android:id="@+id/income_or_expense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="80dp"
+            android:layout_margin="5dp"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/BackgroundWhiteColor" />
+    </RelativeLayout>
+
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_below="@+id/valueAndSignHolder"
+        android:layout_marginStart="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:id="@+id/dateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/categorySpinner"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textSize="20sp"
+        android:textColor="@color/BackgroundWhiteColor"
+        android:background="@drawable/signup_button_background"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:theme="@style/EditTextHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dateTextView"
+        android:id="@+id/descriptionViewInputLayout">
+        <EditText
+            android:id="@+id/descriptionView"
+            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:inputType="textMultiLine"
+            android:layout_marginTop="30dp"
+            android:gravity="start|top"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:textColorHint="@color/BackgroundWhiteColor"
+            android:textColor="@color/BackgroundWhiteColor"
+            android:hint="Enter a description"
+            android:layout_height="wrap_content" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <RelativeLayout
+        android:id="@+id/clearAndConfirmButtonHolder"
+        android:layout_below="@+id/descriptionViewInputLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:imeOptions="actionDone"
+        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/clearButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_button_background"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentBottom="true"
+            android:text="Clear"/>
+        <Button
+            android:id="@+id/addButton"
+            android:layout_toRightOf="@+id/clearButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/login_button_background"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentBottom="true"
+            android:text="Add"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

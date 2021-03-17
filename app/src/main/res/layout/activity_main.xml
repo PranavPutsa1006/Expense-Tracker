@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/activity_main_background"
+    tools:context="com.example.savss.expensetracker.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="42sp"
+        android:textStyle="bold"
+        android:text="@string/app_name"
+        android:textColor="#FFFFFF"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"/>
+    <Button
+        android:id="@+id/loginButton"
+        android:text="@string/loginButtonName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="50dp"
+        android:textColor="#000"
+        android:layout_marginBottom="100dp"
+        android:onClick="loginButton_onClick"
+        android:background="@drawable/login_button_background"/>
+    <Button
+        android:id="@+id/signUpButton"
+        android:text="@string/signUpButtonName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginBottom="50dp"
+        android:textColor="#FFFF"
+        android:onClick="signUpButton_onClick"
+        android:background="@drawable/signup_button_background"/>
+
+</RelativeLayout>
