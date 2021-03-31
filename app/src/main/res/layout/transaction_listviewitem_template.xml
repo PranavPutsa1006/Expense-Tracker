@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="#80ffffff">
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF">
 
     <TextView
         android:id="@+id/dateTextView"
@@ -13,18 +13,24 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:layout_marginEnd="10dp"
-        android:text="Date" />
+        android:layout_marginBottom="10dp"
+        android:background="#FFFFFF"
+        android:drawableTint="#FFFFFF"
+        android:text="Date"
+        android:textColor="#000000" />
 
     <TextView
         android:id="@+id/amountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="10dp"
-        android:text="Amount" />
+        android:layout_centerInParent="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Amount"
+        android:textColor="#000000" />
 
     <TextView
         android:id="@+id/catagoryTextView"
@@ -34,8 +40,9 @@
         android:layout_centerVertical="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:layout_marginEnd="10dp"
-        android:text="Category" />
+        android:layout_marginBottom="10dp"
+        android:text="Category"
+        android:textColor="#000000" />
 
 </RelativeLayout>

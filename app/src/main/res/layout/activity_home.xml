@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
+    android:background="@drawable/activity_main_background"
     tools:context="com.example.savss.expensetracker.HomeActivity">
 
     <FrameLayout
@@ -24,9 +24,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        android:background="@color/navigationViewBackground"
-        app:itemIconTint="@color/bottom_navigation_items"
-        app:itemTextColor="@color/bottom_navigation_items"
+        android:background="#E8F4F8"
+        app:itemIconTint="?attr/actionMenuTextColor"
+        app:itemTextColor="?attr/actionMenuTextColor"
         app:menu="@menu/navigation" />
 
 </RelativeLayout>

@@ -2,36 +2,42 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/activity_main_background">
+    android:backgroundTint="@drawable/activity_main_background">
 
     <ViewSwitcher
         android:id="@+id/simpleViewSwitcher"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/activity_main_background">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/activity_main_background"
             android:orientation="vertical">
 
-            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            <TableLayout
                 android:id="@+id/cat_table"
-                android:stretchColumns="0,1"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:layout_margin="20dp">
-            </TableLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:background="#DAE8FC"
+                android:stretchColumns="0,1"></TableLayout>
 
             <Button
                 android:id="@+id/addCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
+                android:layout_gravity="bottom"
                 android:layout_marginBottom="50dp"
-                android:background="@drawable/login_button_background"
+                android:background="@android:color/holo_blue_bright"
+                android:backgroundTint="@android:color/holo_blue_bright"
                 android:text=" Add Category " />
 
         </RelativeLayout>
@@ -39,77 +45,91 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/activity_main_background"
             android:orientation="vertical">
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/newCategory"
                 android:layout_width="match_parent"
-                android:theme="@style/EditTextHint"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:layout_centerHorizontal="true"
                 android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:foregroundTint="#00000000"
 
-                android:layout_centerHorizontal="true">
+                android:inputType="text"
+                android:textColorHint="#00000000"
+                android:theme="@style/EditTextHint">
+
                 <EditText
                     android:id="@+id/category"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#00000000"
+                    android:hint="@string/newCategory"
                     android:inputType="text"
-                    android:hint="@string/newCategory"/>
+                    android:textColor="#00000000"
+                    android:textColorHighlight="#808080"
+                    android:textColorHint="#808080"
+                    android:textColorLink="#808080" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/newCatBudget"
                 android:layout_width="match_parent"
-                android:theme="@style/EditTextHint"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginTop="10dp"
                 android:layout_below="@id/newCategory"
-                android:layout_centerHorizontal="true">
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:inputType="number"
+                android:theme="@style/EditTextHint">
+
                 <EditText
                     android:id="@+id/budget"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#00000000"
+                    android:hint="@string/newBudget"
                     android:inputType="number"
-                    android:hint="@string/newBudget"/>
+                    android:textColor="#00000000"
+                    android:textColorHighlight="#808080"
+                    android:textColorHint="#808080"
+                    android:textColorLink="#808080" />
             </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:id="@+id/saveCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
-                android:layout_gravity="bottom"
+                android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="50dp"
+                android:layout_gravity="bottom"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/login_button_background"
+                android:layout_marginBottom="50dp"
+                android:background="@android:color/holo_blue_bright"
+                android:backgroundTint="@android:color/holo_blue_bright"
                 android:text=" Save Category " />
 
             <Button
                 android:id="@+id/cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_gravity="bottom"
+                android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginBottom="50dp"
+                android:layout_gravity="bottom"
                 android:layout_marginRight="20dp"
-                android:background="@drawable/login_button_background"
+                android:layout_marginBottom="50dp"
+                android:background="@android:color/holo_blue_bright"
+                android:backgroundTint="@android:color/holo_blue_bright"
                 android:text=" Cancel " />
 
         </RelativeLayout>
     </ViewSwitcher>
-
 
 
 </RelativeLayout>

@@ -2,177 +2,203 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
+    android:foregroundTint="#FFFFFF"
     android:paddingEnd="20dp">
 
     <TextView
+        android:id="@+id/transactionIDTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="#ID"
         android:layout_marginTop="10dp"
-        android:textSize="20sp"
-        android:id="@+id/transactionIDTextView"/>
+        android:text="#ID"
+        android:textColor="#000000"
+        android:textColorHighlight="#000000"
+        android:textColorHint="#808080"
+        android:textColorLink="#808080"
+        android:textSize="20sp" />
 
     <ViewSwitcher
+        android:id="@+id/transactionTypeViewSwitcher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/transactionIDTextView"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
         android:layout_alignParentStart="true"
-        android:id="@+id/transactionTypeViewSwitcher">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Transaction Type"
-            android:id="@+id/transactionTypeTextView"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#000000"
+        android:backgroundTint="#FFFFFF"
+        android:foregroundTint="#000000">
 
         <TextView
+            android:id="@+id/transactionTypeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:text="Transaction Type"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/transactionTypeEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/transactionIDTextView"
-            android:textSize="20sp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
             android:layout_alignParentStart="true"
-            android:text="Transaction Type"
             android:background="@drawable/login_button_background"
-            android:id="@+id/transactionTypeEdit"/>
+            android:paddingStart="10dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="5dp"
+            android:text="Transaction Type"
+            android:textColor="#000000"
+            android:textSize="20sp" />
     </ViewSwitcher>
 
     <ViewSwitcher
+        android:id="@+id/transactionAmountViewSwitcher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/transactionIDTextView"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
         android:layout_alignParentEnd="true"
-        android:id="@+id/transactionAmountViewSwitcher">
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
+
         <TextView
+            android:id="@+id/transactionAmountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:text="Amount"
-            android:id="@+id/transactionAmountTextView"/>
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/transactionAmountEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:text="Amount"
-            android:id="@+id/transactionAmountEditText"/>
+            android:textColor="#000000"
+            android:textSize="20sp" />
     </ViewSwitcher>
 
     <ViewSwitcher
+        android:id="@+id/transactionCategoryViewSwitcher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/transactionTypeViewSwitcher"
-        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
-        android:id="@+id/transactionCategoryViewSwitcher">
+        android:layout_marginTop="20dp">
+
         <TextView
+            android:id="@+id/transactionCategoryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:text="Category"
-            android:id="@+id/transactionCategoryTextView"/>
+            android:textColor="#808080"
+            android:textSize="20sp" />
 
         <Spinner
             android:id="@+id/transactionCategorySpinner"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </ViewSwitcher>
 
     <ViewSwitcher
+        android:id="@+id/transactionDateViewViewSwitcher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/transactionCategoryViewSwitcher"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:id="@+id/transactionDateViewViewSwitcher">
+        android:layout_marginEnd="20dp">
 
         <TextView
+            android:id="@+id/transactionDateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:text="01/02/2018"
-            android:id="@+id/transactionDateTextView"/>
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/transactionDateEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="01/02/2018"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
             android:background="@drawable/signup_button_background"
-            android:id="@+id/transactionDateEdit"/>
+            android:paddingStart="10dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="5dp"
+            android:text="01/02/2018"
+            android:textSize="20sp" />
     </ViewSwitcher>
 
     <ViewSwitcher
+        android:id="@+id/transactionDescriptionViewSwitcher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
         android:layout_below="@+id/transactionDateViewViewSwitcher"
-        android:id="@+id/transactionDescriptionViewSwitcher">
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp">
+
         <TextView
+            android:id="@+id/transactionDescriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Description"
             android:gravity="center_horizontal"
-            android:id="@+id/transactionDescriptionTextView"/>
+            android:text="Description"
+            android:textColor="#808080"
+            android:textSize="20sp" />
 
         <EditText
+            android:id="@+id/transactionDescriptionEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="Description"
             android:gravity="center_horizontal"
-            android:id="@+id/transactionDescriptionEditText"/>
+            android:text="Description"
+            android:textSize="20sp" />
     </ViewSwitcher>
 
     <Button
+        android:id="@+id/closeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/transactionDescriptionViewSwitcher"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/signup_button_background"
+        android:background="#00BCD4"
+        android:foregroundTint="#00BCD4"
         android:text="Close"
-        android:id="@+id/closeButton"/>
+        android:textColor="#808080" />
 
     <Button
+        android:id="@+id/deleteButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/transactionDescriptionViewSwitcher"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/login_button_background"
-        android:text="Delete"
-        android:id="@+id/deleteButton"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/transactionDescriptionViewSwitcher"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:background="#00BCD4"
+        android:text="Delete"
+        android:textColor="#808080" />
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/transactionDescriptionViewSwitcher"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/login_button_background"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#00BCD4"
         android:text="Edit"
-        android:id="@+id/editButton"/>
+        android:textColor="#808080" />
 
 </RelativeLayout>
