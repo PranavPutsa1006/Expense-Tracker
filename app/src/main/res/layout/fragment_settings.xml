@@ -44,12 +44,16 @@
                 android:id="@+id/tabItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/income_and_expense_buttons"
+                android:layout_weight="1"
                 android:text="@string/tab_text_1" />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/income_and_expense_buttons"
+                android:layout_weight="1"
                 android:text="@string/tab_text_2" />
 
 
