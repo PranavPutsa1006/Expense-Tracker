@@ -8,10 +8,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-/**
- * Created by shantam on 14-03-2018.
- */
-
 public class FirebaseDBHelper {
     private static DatabaseReference myRef;
     static FirebaseDatabase database = FirebaseDatabase.getInstance();

@@ -24,8 +24,10 @@
     <string name="title_settings">Settings</string>
     <string name="userAlreadyExistError">An account with this phone number already exist</string>
     <string name="userSuccessfullyAdded">Account successfully created</string>
-    <string name="tab_text_1">Profile Management</string>
+    <string name="tab_text_1">Profile</string>
     <string name="tab_text_2">App Settings</string>
     <string name="newCategory">New Category</string>
     <string name="newBudget">Budget</string>
+    <string name="add_category">Add Category</string>
+
 </resources>

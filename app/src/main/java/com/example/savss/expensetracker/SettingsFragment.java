@@ -56,7 +56,7 @@ public class SettingsFragment extends Fragment {
 
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new ProfileManagement(), "Profile Management");
+        adapter.addFragment(new ProfileManagement(), "Profile");
         adapter.addFragment(new AppSettings(), "App Settings");
 
         viewPager.setAdapter(adapter);

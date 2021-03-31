@@ -20,9 +20,6 @@ import android.widget.ViewSwitcher;
 
 import java.util.ArrayList;
 
-/**
- * Created by Shradhaa on 26-02-2018.
- */
 
 public class AppSettings extends Fragment {
 
@@ -95,18 +92,19 @@ public class AppSettings extends Fragment {
         {
             rv[i]=""+(i+1);
         }
-        String cv[]={"Category", "Budget", "%Spent"};
+        String cv[]={"Category", "Budget", "Spent"};
         int rowCount=count+1;
         int columnCount=cv.length;
 
         TableLayout.LayoutParams tableLayoutParams = new TableLayout.LayoutParams();
         TableLayout tableLayout = (TableLayout) viewapp.findViewById(R.id.cat_table);
         tableLayout.removeAllViewsInLayout();
-        tableLayout.setBackgroundColor(Color.BLACK);
+        tableLayout.setStretchAllColumns(true);
 
         // 2) create tableRow params
         TableRow.LayoutParams tableRowParams = new TableRow.LayoutParams();
-        tableRowParams.setMargins(1, 1, 1, 1);
+        tableRowParams.setMargins(0, 2, 0, 2);
+        tableRowParams.height = 120;
         tableRowParams.weight = 1;
 
 
