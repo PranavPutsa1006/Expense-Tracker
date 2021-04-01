@@ -71,7 +71,7 @@
                     android:inputType="text"
                     android:textColor="#FFFFFF"
                     android:textColorHighlight="#808080"
-                    android:textColorHint="#808080"
+                    android:textColorHint="#FFFFFF"
                     android:textColorLink="#808080" />
             </android.support.design.widget.TextInputLayout>
 
@@ -94,9 +94,9 @@
                     android:backgroundTint="#00000000"
                     android:hint="@string/newBudget"
                     android:inputType="number"
-                    android:textColor="#00000000"
+                    android:textColor="#FFFFFF"
                     android:textColorHighlight="#808080"
-                    android:textColorHint="#808080"
+                    android:textColorHint="#FFFFFF"
                     android:textColorLink="#808080" />
             </android.support.design.widget.TextInputLayout>
 
@@ -104,11 +104,11 @@
                 android:id="@+id/saveCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="bottom"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginBottom="50dp"
                 android:background="@android:color/holo_blue_bright"
                 android:backgroundTint="@android:color/holo_blue_bright"
@@ -130,6 +130,10 @@
 
         </RelativeLayout>
     </ViewSwitcher>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </RelativeLayout>

@@ -60,17 +60,30 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(categoryTableCreationQuery);
         sqLiteDatabase.execSQL(transactionTableCreationQuery);
 
-        /*try {
-            sqLiteDatabase.execSQL("insert into categories values (1, 'Personal', 5000);");
-            sqLiteDatabase.execSQL("insert into categories values (2, 'Medical', 10000);");
-            sqLiteDatabase.execSQL("insert into transactions values(1, 1, '2018-02-22', 1, 'expense', 1000, 'another');");
-            sqLiteDatabase.execSQL("insert into transactions values(2, 1, '2018-02-22', 1, 'income', 1000, 'another');");
-            sqLiteDatabase.execSQL("insert into transactions values(3, 1, '2018-02-22', 1, 'expense', 2000, 'asdf');");
-            sqLiteDatabase.execSQL("insert into transactions values(4, 1, '2018-02-22', 2, 'expense', 4000, 'asdf');");
+        //String categoryAddQuery1 = String.format("INSERT INTO %s VALUES(1, 'Travel', 5000);",TABLE_CATEGORY);
+        //sqLiteDatabase.compileStatement(categoryAddQuery1);
+//        SQLiteDatabase db = getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put("category_id",1);
+//        contentValues.put("name","Travel");
+//        contentValues.put("budget",5000);
+//        sqLiteDatabase.insert(TABLE_CATEGORY, null, contentValues);
+
+//        sqLiteDatabase.execSQL(String.format("insert into %s values(2, 'Medical', 10000);",TABLE_CATEGORY));
+//        sqLiteDatabase.execSQL(String.format("insert into %s values(3, 'Food', 5000);",TABLE_CATEGORY));
+//        sqLiteDatabase.execSQL(String.format("insert into %s values(4, 'Rent', 15000);",TABLE_CATEGORY));
+//        sqLiteDatabase.execSQL(String.format("insert into %s values(5, 'Utility bills', 5000);",TABLE_CATEGORY));
+
+        try {
+
+//            sqLiteDatabase.execSQL("insert into transactions values(1, 1, '2018-02-22', 1, 'expense', 1000, 'another');");
+//            sqLiteDatabase.execSQL("insert into transactions values(2, 1, '2018-02-22', 1, 'income', 1000, 'another');");
+//            sqLiteDatabase.execSQL("insert into transactions values(3, 1, '2018-02-22', 1, 'expense', 2000, 'asdf');");
+//            sqLiteDatabase.execSQL("insert into transactions values(4, 1, '2018-02-22', 2, 'expense', 4000, 'asdf');");
         }
         catch(Exception e) {
             e.printStackTrace();
-        }*/
+        }
     }
 
     public boolean tryAddUser(String name, String email, String phoneNumber, String password) {
@@ -435,5 +448,7 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         return  expenses;
 
     }
+
+    //makeNewCategory("Travel",5000);
 
 }

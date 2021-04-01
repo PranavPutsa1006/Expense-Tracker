@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true"
+        android:state_focused="true"
+        android:state_active="true"
         android:drawable="@color/incomeExpenseSelected"/> <!-- pressed -->
-    <item android:state_focused="true"
-        android:drawable="@color/incomeExpenseSelected"/> <!-- focused -->
-    <item android:drawable="@color/incomeExpense"/> <!-- default -->
+    <item android:state_pressed="false"
+        android:drawable="@color/incomeExpense"/> <!-- focused -->
+    <item android:drawable="@color/incomeExpenseSelected"/> <!-- default -->
 </selector>

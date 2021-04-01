@@ -39,7 +39,6 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:background="#DCDCDC"
         android:orientation="horizontal">
 
         <EditText
@@ -48,27 +47,27 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="70dp"
             android:layout_marginBottom="5dp"
             android:inputType="numberDecimal"
-            android:text="0.0"
-            android:textColor="@color/black"
-            android:textColorHint="#000000"
-            android:textSize="80dp" />
+            android:hint="0.0"
+            android:textColor="@color/BackgroundWhiteColor"
+            android:textColorHint="@color/BackgroundWhiteColor"
+            android:textSize="80sp" />
 
         <TextView
             android:id="@+id/income_or_expense"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
             android:text="+"
-            android:textColor="@color/black"
-            android:textSize="80dp" />
+            android:textColor="@color/BackgroundWhiteColor"
+            android:textSize="80sp" />
     </RelativeLayout>
 
     <Spinner
@@ -87,6 +86,7 @@
         android:layout_below="@id/categorySpinner"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/signup_button_background"
         android:paddingStart="10dp"
         android:paddingTop="5dp"
@@ -101,7 +101,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/dateTextView"
-        android:background="#DCDCDC"
         android:theme="@style/EditTextHint">
 
         <EditText
@@ -115,7 +114,7 @@
             android:gravity="start|top"
             android:hint="Enter a description"
             android:inputType="textMultiLine"
-            android:textColor="@color/black"
+            android:textColor="@color/BackgroundWhiteColor"
             android:textColorHighlight="#808080"
             android:textColorHint="@color/black" />
 

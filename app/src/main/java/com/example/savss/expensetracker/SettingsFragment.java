@@ -1,9 +1,12 @@
 package com.example.savss.expensetracker;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -19,12 +22,21 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class SettingsFragment extends Fragment {
    // private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -32,6 +44,9 @@ public class SettingsFragment extends Fragment {
 
 
 
+    Toast toast;
+    private FirebaseAuth firebaseAuth;
+    @SuppressLint("ShowToast")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -168,6 +183,73 @@ public class SettingsFragment extends Fragment {
        @Override
        public CharSequence getPageTitle(int position) {
            return mFragmentTitleList.get(position);
+       }
+   }
+
+   public static class error_display extends AppCompatActivity{
+       Toast toast;
+       @SuppressLint("ShowToast")
+       @Override
+       protected void onCreate(Bundle savedInstanceState) {
+           super.onCreate(savedInstanceState);
+           setContentView(R.layout.fragment_app_settings);
+           setTitle("new category");
+           toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
+       }
+
+       public void error_detection(View v) {
+           EditText id = findViewById(R.id.newCategory);
+           EditText password = findViewById(R.id.newCatBudget);
+
+           if (id.getText().toString().isEmpty()){
+               displayError(Integer.parseInt("Enter Category"));
+               return;
+           }
+
+           if (password.getText().toString().isEmpty()){
+               displayError(Integer.parseInt("Enter Budget"));
+               return;
+           }
+
+
+
+
+
+           // TODO: Remove this if in final product
+//           if (id.getText().toString().equals("a") && password.getText().toString().equals("a")) {
+//               Intent toDashboard = new Intent(this, HomeActivity.class);
+//               UserData.userID = 1;
+//               startActivity(toDashboard);
+//           }
+
+           IDType idType;
+
+           if (!password.getText().toString().isEmpty() && !id.getText().toString().isEmpty()) {
+               Toast.makeText(error_display.this, "New Category added", Toast.LENGTH_LONG).show();
+           }
+           else {
+               displayError(Integer.parseInt("Invalid details"));
+           }
+       }
+
+       private void displayError(int message) {
+           Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+           vib.vibrate(120);
+
+           toast.setText(message);
+           toast.show();
+       }
+
+       private void displayError(int message, View view) {
+           Animation animShake = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.shake);
+           view.setAnimation(animShake);
+           view.startAnimation(animShake);
+
+           Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+           vib.vibrate(120);
+
+           toast.setText(message);
+           toast.show();
        }
    }
 }
