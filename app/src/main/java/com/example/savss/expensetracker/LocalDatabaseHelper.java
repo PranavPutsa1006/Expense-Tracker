@@ -62,12 +62,7 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
 
         //String categoryAddQuery1 = String.format("INSERT INTO %s VALUES(1, 'Travel', 5000);",TABLE_CATEGORY);
         //sqLiteDatabase.compileStatement(categoryAddQuery1);
-//        SQLiteDatabase db = getWritableDatabase();
-//        ContentValues contentValues = new ContentValues();
-//        contentValues.put("category_id",1);
-//        contentValues.put("name","Travel");
-//        contentValues.put("budget",5000);
-//        sqLiteDatabase.insert(TABLE_CATEGORY, null, contentValues);
+
 
 //        sqLiteDatabase.execSQL(String.format("insert into %s values(2, 'Medical', 10000);",TABLE_CATEGORY));
 //        sqLiteDatabase.execSQL(String.format("insert into %s values(3, 'Food', 5000);",TABLE_CATEGORY));
@@ -274,6 +269,12 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         ArrayList<String> categories = getAllCategories();
         UserData.categories = categories;
         getCategoryWiseExpenses();
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("category_id",1);
+        contentValues.put("name","Travel");
+        contentValues.put("budget",5000);
+        db.insert(TABLE_CATEGORY, null, contentValues);
         sqLiteDatabase.close();
     }
     @Override

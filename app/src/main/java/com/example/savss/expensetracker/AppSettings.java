@@ -12,6 +12,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +39,7 @@ public class AppSettings extends Fragment {
     private ViewSwitcher viewSwitcher;
     Button btnNext, btnPrev, btnCan;
     View viewapp;
+    Toast toast;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,6 +92,14 @@ public class AppSettings extends Fragment {
             //Toast.makeText(getActivity(), "hello", Toast.LENGTH_SHORT).show();
         }
     };
+
+    private void displayToast(String message) {
+        Vibrator vib = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+        vib.vibrate(120);
+
+        toast.setText(message);
+        toast.show();
+    }
 
     public void notifyIfExceededLimit(String category, float amount) {
         LocalDatabaseHelper localDatabaseHelper = new LocalDatabaseHelper(getActivity(), null, null, 1);

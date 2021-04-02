@@ -96,6 +96,9 @@ public class LoginActivity extends AppCompatActivity {
         }
         else {
             displayError(R.string.loginErrorMessage);
+            Intent inn = new Intent(LoginActivity.this,SignUpActivity.class);
+            startActivity(inn);
+            finish();
         }
     }
 
