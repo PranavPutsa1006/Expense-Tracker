@@ -160,9 +160,9 @@ public class AddTransactionFragment extends Fragment {
 
             String message = "";
 
-            /*if (valueOfTransactionType.equals("expense")) {
+            if (valueOfTransactionType.equals("expense")) {
                 message = notifyIfExceededLimit(categorySpinner.getSelectedItem().toString(), Float.parseFloat(value.getText().toString()));
-            }*/
+            }
 
             localDatabaseHelper.addTransaction(String.valueOf(UserData.userID), UserData.categories.indexOf(categorySpinner.getSelectedItem().toString()) + 1, valueOfTransactionType, value.getText().toString(), description.getText().toString(), transactionDate);
 

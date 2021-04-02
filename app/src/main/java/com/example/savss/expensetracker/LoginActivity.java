@@ -52,17 +52,17 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
-                    if (task.isSuccessful()) {
-
-                        Intent inn = new Intent(LoginActivity.this,HomeActivity.class);
-                        startActivity(inn);
-                        finish();
-
-
-                    } else {
+                    if (!task.isSuccessful()) {
                         Toast.makeText(LoginActivity.this, "No Record Has Found Please Signup ", Toast.LENGTH_LONG).show();
                         Intent inn = new Intent(LoginActivity.this,LoginActivity.class);
                         startActivity(inn);
+
+                    }
+                    else {
+//                        Toast.makeText(LoginActivity.this, "Verifying credentials... ", Toast.LENGTH_LONG).show();
+//                        Intent inn = new Intent(LoginActivity.this,HomeActivity.class);
+//                        startActivity(inn);
+//                        finish();
                     }
                 }
             });
@@ -76,11 +76,11 @@ public class LoginActivity extends AppCompatActivity {
 
 
         // TODO: Remove this if in final product
-        if (id.getText().toString().equals("a") && password.getText().toString().equals("a")) {
-            Intent toDashboard = new Intent(this, HomeActivity.class);
-            UserData.userID = 1;
-            startActivity(toDashboard);
-        }
+//        if (id.getText().toString().equals("a") && password.getText().toString().equals("a")) {
+//            Intent toDashboard = new Intent(this, HomeActivity.class);
+//            UserData.userID = 1;
+//            startActivity(toDashboard);
+//        }
 
         IDType idType;
 
@@ -98,9 +98,6 @@ public class LoginActivity extends AppCompatActivity {
         }
         else {
             displayError(R.string.loginErrorMessage);
-            Intent inn = new Intent(LoginActivity.this,SignUpActivity.class);
-            startActivity(inn);
-            finish();
         }
     }
 
