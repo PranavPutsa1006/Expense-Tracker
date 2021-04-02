@@ -266,8 +266,7 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
             c.moveToNext();
         }
 
-        ArrayList<String> categories = getAllCategories();
-        UserData.categories = categories;
+        UserData.categories = getAllCategories();
         getCategoryWiseExpenses();
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -275,6 +274,35 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("name","Travel");
         contentValues.put("budget",5000);
         db.insert(TABLE_CATEGORY, null, contentValues);
+        db.close();
+        SQLiteDatabase db1 = getWritableDatabase();
+        ContentValues contentValues1 = new ContentValues();
+        contentValues1.put("category_id",2);
+        contentValues1.put("name","Medical");
+        contentValues1.put("budget",10000);
+        db1.insert(TABLE_CATEGORY, null, contentValues1);
+        db1.close();
+        SQLiteDatabase db2 = getWritableDatabase();
+        ContentValues contentValues2 = new ContentValues();
+        contentValues2.put("category_id",3);
+        contentValues2.put("name","Food");
+        contentValues2.put("budget",10000);
+        db2.insert(TABLE_CATEGORY, null, contentValues2);
+        db2.close();
+        SQLiteDatabase db3 = getWritableDatabase();
+        ContentValues contentValues3 = new ContentValues();
+        contentValues3.put("category_id",4);
+        contentValues3.put("name","Utility bills");
+        contentValues3.put("budget",8000);
+        db3.insert(TABLE_CATEGORY, null, contentValues3);
+        db3.close();
+        SQLiteDatabase db4 = getWritableDatabase();
+        ContentValues contentValues4 = new ContentValues();
+        contentValues4.put("category_id",5);
+        contentValues4.put("name","Rent");
+        contentValues4.put("budget",15000);
+        db4.insert(TABLE_CATEGORY, null, contentValues4);
+        db4.close();
         sqLiteDatabase.close();
     }
     @Override

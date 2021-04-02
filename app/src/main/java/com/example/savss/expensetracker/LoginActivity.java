@@ -61,6 +61,8 @@ public class LoginActivity extends AppCompatActivity {
 
                     } else {
                         Toast.makeText(LoginActivity.this, "No Record Has Found Please Signup ", Toast.LENGTH_LONG).show();
+                        Intent inn = new Intent(LoginActivity.this,LoginActivity.class);
+                        startActivity(inn);
                     }
                 }
             });
