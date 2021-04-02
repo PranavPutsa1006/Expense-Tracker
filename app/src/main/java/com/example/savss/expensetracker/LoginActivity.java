@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
                     if (!task.isSuccessful()) {
-                        Toast.makeText(LoginActivity.this, "No Record Has Found Please Signup ", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "No record found please Signup ", Toast.LENGTH_LONG).show();
                         Intent inn = new Intent(LoginActivity.this,LoginActivity.class);
                         startActivity(inn);
 
@@ -92,6 +92,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (password.getText().toString().equals(localDatabaseHelper.getPassword(id.getText().toString(), idType))) {
+            Toast.makeText(LoginActivity.this, "Welcome, "+localDatabaseHelper.getName(id.getText().toString(), idType), Toast.LENGTH_LONG).show();
             Intent toDashboard = new Intent(this, HomeActivity.class);
             UserData.userID = localDatabaseHelper.getUserID(id.getText().toString(), idType);
             startActivity(toDashboard);

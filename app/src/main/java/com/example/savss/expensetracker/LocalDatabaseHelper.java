@@ -139,6 +139,33 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         return password;
     }
 
+    public String getName(String loginID, IDType idType) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        String getNameQuery = "";
+
+        if (idType == IDType.Email) {
+            getNameQuery = String.format("SELECT %s FROM %s WHERE %s = '%s'", USERS_NAME, TABLE_USERS, USERS_EMAIL, loginID);
+        }
+        else if (idType == IDType.PhoneNumber) {
+            getNameQuery = String.format("SELECT %s FROM %s WHERE %s = '%s'", USERS_NAME, TABLE_USERS, USERS_PHONENUMBER, loginID);
+        }
+
+        Cursor cursor = sqLiteDatabase.rawQuery(getNameQuery, null);
+        String Name = "";
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            if (cursor.getString(cursor.getColumnIndex(USERS_NAME)) != null) {
+                Name = cursor.getString(cursor.getColumnIndex(USERS_NAME));
+            }
+            cursor.moveToNext();
+        }
+        sqLiteDatabase.close();
+
+        return Name;
+    }
+
     public int getUserID(String loginID) {
         return getUserID(loginID, IDType.Email);
     }

@@ -120,10 +120,10 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             });
 
-//                Intent toDashboard = new Intent(this, HomeActivity.class);
+                Intent toDashboard = new Intent(this, HomeActivity.class);
 //                toDashboard.putExtra(LocalDatabaseHelper.COLUMN_ID, localDatabaseHelper.getUserID(emailAddress.getText().toString()));
-//                startActivity(toDashboard);
-//                displayTosat(R.string.userSuccessfullyAdded);
+                startActivity(toDashboard);
+                displayTosat(R.string.userSuccessfullyAdded);
             }
             else {
                 displayTosat(R.string.userAlreadyExistError);
