@@ -84,9 +84,9 @@ public class DashboardFragment extends Fragment {
 
         BarChartExpenseData barChartExpenseData = localDatabaseHelper.getCustomDateTransactionData(UserData.userID, fromDate, toDate);
 
-        float barWidth = 0.2f;
-        float barSpace = 0.1f;
-        float groupSpace = 0.4f;
+        float barWidth = 0.1f;
+        float barSpace = 0f;
+        float groupSpace = 0.1f;
 
         customDatesBarChart.setData(barChartExpenseData.getBarData());
         customDatesBarChart.getData().setHighlightEnabled(false);
@@ -121,7 +121,8 @@ public class DashboardFragment extends Fragment {
         xAxis.setAxisMinimum(0);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(barChartExpenseData.getCategories()));
-        xAxis.setLabelCount(barChartExpenseData.getBarData().getEntryCount());
+        xAxis.setLabelCount(barChartExpenseData.getBarData().getEntryCount()*2);
+
 
         customDatesBarChart.getAxisRight().setEnabled(false);
         YAxis yAxis = customDatesBarChart.getAxisLeft();
