@@ -1,5 +1,8 @@
 package com.example.savss.expensetracker;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Vibrator;
@@ -135,13 +138,28 @@ public class SignUpActivity extends AppCompatActivity {
             return false;
         }
 
+        if (!isNameValid(yourName.getText().toString())) {
+            displayError("Enter a valid Name", yourName);
+            return false;
+        }
+
         if (emailAddress.getText().toString().isEmpty()){
             displayError(R.string.emptyEmailAddressError, emailAddress);
             return false;
         }
 
+        if (!isEmailValid(emailAddress.getText().toString())) {
+            displayError("Enter a valid Email Address", emailAddress);
+            return false;
+        }
+
         if (phoneNumber.getText().toString().isEmpty()){
             displayError(R.string.emptyPhoneNumberError, phoneNumber);
+            return false;
+        }
+
+        if (!isPhoneValid(phoneNumber.getText().toString())) {
+            displayError("Enter a valid Phone Number", phoneNumber);
             return false;
         }
 
@@ -192,6 +210,30 @@ public class SignUpActivity extends AppCompatActivity {
 
         toast.setText(message);
         toast.show();
+    }
+    private boolean isNameValid(String Name)
+    {
+        String nameRegex = "^[A-Za-z\\s]{3,30}$";
+        Pattern pat = Pattern.compile(nameRegex);
+        return pat.matcher(Name).matches();
+    }
+    private boolean isEmailValid(String email)
+    {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
+    }
+    private boolean isPhoneValid(String Phone)
+    {
+        Pattern pat = Pattern.compile("(0/91)?[7-9][0-9]{9}");
+        Matcher m = pat.matcher(Phone);
+        return (m.find() && m.group().equals(Phone));
     }
 
     private boolean isPasswordValid(String password)
