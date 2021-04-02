@@ -14,9 +14,10 @@
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
         android:text="@string/signUpButtonName"
-        android:textColor="#000000"
+        android:fontFamily="sans-serif-condensed"
+        android:textColor="#ffff"
         android:textSize="32sp"
-        android:textStyle="bold" />
+        />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/yourNameInputLayout"
@@ -25,10 +26,10 @@
         android:layout_below="@+id/signUpTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="40dp"
         android:inputType="textEmailAddress"
-        android:textColorHint="#808080"
+        android:textColorHint="#606060"
         android:theme="@style/EditTextHint">
 
         <EditText
@@ -36,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/userNameEditTextHint"
+            android:fontFamily="sans-serif-condensed"
             android:inputType="textPersonName"
             android:textColor="#FFFFFF" />
     </android.support.design.widget.TextInputLayout>
@@ -47,10 +49,10 @@
         android:layout_below="@+id/yourNameInputLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         android:inputType="textEmailAddress"
-        android:textColorHint="#808080"
+        android:textColorHint="#606060"
         android:theme="@style/EditTextHint">
 
         <EditText
@@ -58,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/emailAddressEditTextHint"
+            android:fontFamily="sans-serif-condensed"
             android:inputType="textEmailAddress"
             android:textColor="#FFFFFF" />
     </android.support.design.widget.TextInputLayout>
@@ -69,10 +72,10 @@
         android:layout_below="@+id/emailAddressInputLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         android:inputType="textEmailAddress"
-        android:textColorHint="#808080"
+        android:textColorHint="#606060"
         android:theme="@style/EditTextHint">
 
         <EditText
@@ -80,6 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/phoneNumberEditTextHint"
+            android:fontFamily="sans-serif-condensed"
             android:inputType="phone"
             android:textColor="#FFFFFF" />
 
@@ -92,10 +96,10 @@
         android:layout_below="@+id/phoneNumberInputLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         android:inputType="textEmailAddress"
-        android:textColorHint="#808080"
+        android:textColorHint="#606060"
         android:theme="@style/EditTextHint">
 
         <EditText
@@ -103,6 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/passwordEditTextHint"
+            android:fontFamily="sans-serif-condensed"
             android:inputType="textPassword"
             android:textColor="#FFFFFF" />
     </android.support.design.widget.TextInputLayout>
@@ -114,10 +119,10 @@
         android:layout_below="@+id/passwordInputLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         android:inputType="textEmailAddress"
-        android:textColorHint="#808080"
+        android:textColorHint="#606060"
         android:theme="@style/EditTextHint">
 
         <EditText
@@ -125,6 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/confirmPasswordEditTextHint"
+            android:fontFamily="sans-serif-condensed"
             android:inputType="textPassword"
             android:textColor="#FFFFFF" />
     </android.support.design.widget.TextInputLayout>
@@ -135,9 +141,10 @@
         android:layout_height="40dp"
         android:layout_below="@+id/confirmPasswordInputLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:background="@android:color/holo_blue_bright"
+        android:layout_marginTop="60dp"
+        android:background="#ccffff"
         android:onClick="signUpButton_onClick"
+        android:fontFamily="sans-serif-condensed"
         android:text="@string/signUpButtonName" />
 
 </RelativeLayout>
