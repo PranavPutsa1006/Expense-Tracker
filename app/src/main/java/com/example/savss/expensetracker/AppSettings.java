@@ -1,9 +1,20 @@
 package com.example.savss.expensetracker;
 
 import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -17,6 +28,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewSwitcher;
+import java.text.DecimalFormat;
 
 import java.util.ArrayList;
 
@@ -79,6 +91,47 @@ public class AppSettings extends Fragment {
         }
     };
 
+    public void notifyIfExceededLimit(String category, float amount) {
+        LocalDatabaseHelper localDatabaseHelper = new LocalDatabaseHelper(getActivity(), null, null, 1);
+        ArrayList<String> categories = localDatabaseHelper.getAllCategories();
+        ArrayList<Integer> budgets = localDatabaseHelper.getAllCategoryBudgets();
+        ArrayList<Float> expense = localDatabaseHelper.getCategoryWiseExpenses();
+
+        int categoryIndex = categories.indexOf(category);
+        float finalAmount = expense.get(categoryIndex) + amount;
+        String message = "";
+
+        if (budgets.get(categoryIndex) < (expense.get(categoryIndex) + amount)) {
+            /*String NOTIFICATION_CHANNEL_ID = "Limit-Alert";
+
+            NotificationManager notificationManager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+                NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID,
+                        "Channel human readable title",
+                        NotificationManager.IMPORTANCE_DEFAULT);
+                notificationManager.createNotificationChannel(channel);
+            }
+
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(addTransactionView.getContext(), NOTIFICATION_CHANNEL_ID);
+            notificationBuilder.setSmallIcon(R.mipmap.ic_launcher_round)
+                    .setContentTitle("Category " + category + " Exceeded Limit")
+                    .setContentText("You have exceeded your budget " + budgets.get(categoryIndex) + ". Your current expenditure is " + finalAmount + ".");
+
+            Intent notificationIntent = new Intent(getContext(), HomeActivity.class);
+            PendingIntent contentIntent = PendingIntent.getActivity(getContext(), 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            notificationBuilder.setContentIntent(contentIntent);
+
+            notificationManager.notify(1, notificationBuilder.build());
+            System.out.println("notify");*/
+
+            message = "You have exceeded your budget " + budgets.get(categoryIndex) + " for " + category + ". Your current expenditure is " + finalAmount + ".\n";
+        }
+
+        alert a = new alert();
+        a.hello(message);
+    }
+
     public void tableCreate()
     {
         LocalDatabaseHelper DB = new LocalDatabaseHelper(getActivity(), null, null, 1);
@@ -130,7 +183,8 @@ public class AppSettings extends Fragment {
                         spent = expenses.get(i-1)/budgets.get(i-1);
                     else
                         spent= (float) 0.0;
-                    rowentry[2]=spent+"%";
+                    DecimalFormat df = new DecimalFormat("#.##");
+                    rowentry[2]=df.format(spent)+"%";
                 }
                 //rowentry[2]="0%";
 
@@ -159,6 +213,53 @@ public class AppSettings extends Fragment {
         HorizontalScrollView hsv = new HorizontalScrollView(getActivity());
         hsv.addView(tableLayout);
         sv.addView(hsv);*/
+        //alert a = new alert();
+        //a.hello();
+    }
+
+    static class alert extends AppCompatActivity{
+        NotificationManager nm = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification notify = new Notification.Builder(getApplicationContext()).setContentTitle("Expense Tracker").setContentText("Alert Triggered, Maximum expense exceeded").setContentTitle("Alert").setSmallIcon(R.mipmap.ic_launcher_round).build();
+
+        public void testMessage(String message, Intent intent){
+
+            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 , intent,
+                    PendingIntent.FLAG_ONE_SHOT);
+
+
+            String channelId = "some_channel_id";
+            Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            android.support.v4.app.NotificationCompat.Builder notificationBuilder =
+                    new android.support.v4.app.NotificationCompat.Builder(this, channelId)
+                            .setSmallIcon(R.mipmap.ic_launcher_round)
+                            .setContentTitle(getString(R.string.app_name))
+                            .setContentText(message)
+                            .setAutoCancel(true)
+                            .setSound(defaultSoundUri)
+                            .setBadgeIconType(android.support.v4.app.NotificationCompat.BADGE_ICON_SMALL)
+                            .setContentIntent(pendingIntent);
+
+            NotificationManager notificationManager =
+                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+            // Since android Oreo notification channel is needed.
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationChannel channel = new NotificationChannel(channelId,
+                        "Channel human readable title",
+                        NotificationManager.IMPORTANCE_DEFAULT);
+                assert notificationManager != null;
+                notificationManager.createNotificationChannel(channel);
+            }
+
+            assert notificationManager != null;
+            notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+        }
+        public void hello(String message){
+            alert a = new alert();
+            Intent resultIntent = new Intent(this,alert.class);
+            a.testMessage(message,resultIntent);
+        }
     }
 
 }
+

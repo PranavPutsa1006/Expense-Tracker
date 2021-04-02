@@ -36,9 +36,10 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="50dp"
-                android:background="@android:color/holo_blue_bright"
+                android:hapticFeedbackEnabled="true"
+                android:background="@drawable/login_button_background"
                 android:backgroundTint="@android:color/holo_blue_bright"
-                android:text=" Add Category " />
+                android:text="     Add Category     " />
 
         </RelativeLayout>
 
@@ -66,13 +67,13 @@
                     android:id="@+id/category"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#00000000"
+                    android:backgroundTint="#FFFFFF"
                     android:hint="@string/newCategory"
                     android:inputType="text"
                     android:textColor="#FFFFFF"
-                    android:textColorHighlight="#808080"
+                    android:textColorHighlight="#FFFFFF"
                     android:textColorHint="#FFFFFF"
-                    android:textColorLink="#808080" />
+                    android:textColorLink="#FFFFFF" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -91,7 +92,7 @@
                     android:id="@+id/budget"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#00000000"
+                    android:backgroundTint="#FFFFFF"
                     android:hint="@string/newBudget"
                     android:inputType="number"
                     android:textColor="#FFFFFF"
@@ -107,12 +108,12 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_gravity="bottom"
+                android:layout_gravity="top"
                 android:layout_marginStart="20dp"
-                android:layout_marginBottom="50dp"
-                android:background="@android:color/holo_blue_bright"
+                android:layout_marginBottom="500dp"
+                android:background="@drawable/login_button_background"
                 android:backgroundTint="@android:color/holo_blue_bright"
-                android:text=" Save Category " />
+                android:text="     Save Category     " />
 
             <Button
                 android:id="@+id/cancel"
@@ -123,8 +124,8 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="bottom"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="50dp"
-                android:background="@android:color/holo_blue_bright"
+                android:layout_marginBottom="500dp"
+                android:background="@drawable/login_button_background"
                 android:backgroundTint="@android:color/holo_blue_bright"
                 android:text=" Cancel " />
 

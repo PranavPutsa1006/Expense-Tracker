@@ -13,6 +13,7 @@
         android:textSize="32sp"
         android:textStyle="bold"
         android:text="@string/loginButtonName"
+        android:fontFamily="sans-serif-condensed"
         android:textColor="#FFFFFF"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
