@@ -79,6 +79,20 @@ public class AddTransactionFragment extends Fragment {
     private void initialise() {
         income = addTransactionView.findViewById(R.id.income_button);
         expense = addTransactionView.findViewById(R.id.expense_button);
+
+        income.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                income.setBackgroundColor(Color.BLUE);
+            }
+        });
+        expense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                income.setBackgroundColor(Color.BLUE);
+            }
+        });
+
         incomeOrExpense = addTransactionView.findViewById(R.id.income_or_expense);
         value = addTransactionView.findViewById(R.id.valueDisplay);
         clear = addTransactionView.findViewById(R.id.clearButton);

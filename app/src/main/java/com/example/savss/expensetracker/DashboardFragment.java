@@ -118,7 +118,7 @@ public class DashboardFragment extends Fragment {
         xAxis.setGranularityEnabled(true);
         xAxis.setCenterAxisLabels(true);
         xAxis.setDrawGridLines(true);
-        xAxis.setAxisMinimum(0);
+        xAxis.setAxisMinimum(0.2f);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(barChartExpenseData.getCategories()));
         xAxis.setLabelCount(barChartExpenseData.getBarData().getEntryCount()*2);
