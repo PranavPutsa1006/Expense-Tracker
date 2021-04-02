@@ -24,7 +24,7 @@
         android:text="NAME"
         android:fontFamily="sans-serif-condensed-medium"
         android:textColor="#FFFF"
-        android:textSize="14sp" />
+        android:textSize="13sp" />
 
         <TextView
             android:id="@+id/textView6"
