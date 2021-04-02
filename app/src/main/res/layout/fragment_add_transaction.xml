@@ -129,6 +129,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:imeOptions="actionDone"
+        android:gravity="top"
         android:orientation="horizontal">
 
         <Button
