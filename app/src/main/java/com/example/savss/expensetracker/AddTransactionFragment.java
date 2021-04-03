@@ -40,6 +40,7 @@ import java.util.Date;
 public class AddTransactionFragment extends Fragment {
 
     private String transactionType = "+";
+    private String desc = "description";
     private View addTransactionView;
     private LocalDatabaseHelper localDatabaseHelper;
     private Button income;
@@ -167,6 +168,7 @@ public class AddTransactionFragment extends Fragment {
             localDatabaseHelper.addTransaction(String.valueOf(UserData.userID), UserData.categories.indexOf(categorySpinner.getSelectedItem().toString()) + 1, valueOfTransactionType, value.getText().toString(), description.getText().toString(), transactionDate);
 
             clear.callOnClick();
+            localDatabaseHelper.getLastMonthExpenses(UserData.userID);
             displayToast(message + "Transaction Added Successfully");
         }
     };
@@ -192,7 +194,7 @@ public class AddTransactionFragment extends Fragment {
                 notificationManager.createNotificationChannel(channel);
             }
 
-            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(addTransactionView.getContext(), NOTIFICATION_CHANNEL_ID);
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder((addTransaction)View.getContext(), NOTIFICATION_CHANNEL_ID);
             notificationBuilder.setSmallIcon(R.mipmap.ic_launcher_round)
                     .setContentTitle("Category " + category + " Exceeded Limit")
                     .setContentText("You have exceeded your budget " + budgets.get(categoryIndex) + ". Your current expenditure is " + finalAmount + ".");

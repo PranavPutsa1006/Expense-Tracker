@@ -8,6 +8,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.icu.text.SimpleDateFormat;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
@@ -21,6 +22,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ScrollView;
@@ -190,7 +192,7 @@ public class AppSettings extends Fragment {
                     rowentry[1]=""+budgets.get(i-1);
                     float spent;
                     if(i-1<expenses.size())
-                        spent = expenses.get(i-1)/budgets.get(i-1);
+                        spent = (expenses.get(i-1)/budgets.get(i-1))*100;
                     else
                         spent= (float) 0.0;
                     DecimalFormat df = new DecimalFormat("#.##");
@@ -270,6 +272,51 @@ public class AppSettings extends Fragment {
             a.testMessage(message,resultIntent);
         }
     }
+
+//    class TransactionListViewAdapter extends BaseAdapter {
+//
+//        private ArrayList<CategoryData> categoryData;
+//
+//        private CategoryListViewAdapter(ArrayList<CategoryData> categoryData) {
+//            this.categoryData = categoryData;
+//        }
+//
+//        @Override
+//        public int getCount() {
+//            return transactionData.size();
+//        }
+//
+//        @Override
+//        public Object getItem(int i) {
+//            return transactionData.get(i);
+//        }
+//
+//        @Override
+//        public long getItemId(int i) {
+//            return i;
+//        }
+//
+//        @SuppressLint("ViewHolder")
+//        @Override
+//        public View getView(int i, View view, ViewGroup viewGroup) {
+//            view = getLayoutInflater().inflate(R.layout.transaction_listviewitem_template, null);
+//            TextView dateTextView = view.findViewById(R.id.dateTextView);
+//            TextView amountTextView = view.findViewById(R.id.amountTextView);
+//            TextView catagoryTextView = view.findViewById(R.id.catagoryTextView);
+//
+//            TransactionData transactionData = this.transactionData.get(i);
+//
+//            @SuppressLint("SimpleDateFormat")
+//            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+//            String transactionDateString = simpleDateFormat.format(transactionData.getDateTime());
+//
+//            dateTextView.setText(transactionDateString);
+//            String amount = (transactionData.getTransactionType().toLowerCase().equals("income") ? "+" : "-") + " " + transactionData.getAmount();
+//            amountTextView.setText(amount);
+//            catagoryTextView.setText(transactionData.getCategory());
+//            return view;
+//        }
+//    }
 
 }
 

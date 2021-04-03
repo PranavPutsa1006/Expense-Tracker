@@ -1,5 +1,6 @@
 package com.example.savss.expensetracker;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.graphics.Color;
@@ -144,6 +145,8 @@ public class DashboardFragment extends Fragment {
     }
 
     private void refreashListItemsAndChart() {
+        //localDatabaseHelper.getLastMonthExpenses(UserData.userID);
+        setLastMonthPieChart();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date fromDate = null;
         Date toDate = null;
@@ -153,6 +156,8 @@ public class DashboardFragment extends Fragment {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        localDatabaseHelper.getLastMonthExpenses(UserData.userID);
 
         BarChartExpenseData barChartExpenseData = localDatabaseHelper.getCustomDateTransactionData(UserData.userID, fromDate, toDate);
 
@@ -389,6 +394,8 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 localDatabaseHelper.deleteTransaction(transactionData.getId());
+                //localDatabaseHelper.getLastMonthExpenses(UserData.userID);
+                //setLastMonthPieChart();
                 refreashListItemsAndChart();
                 transactionDataPopUp.cancel();
             }
@@ -414,11 +421,14 @@ public class DashboardFragment extends Fragment {
                     localDatabaseHelper.updateTransactionDetails(transactionData.getId(), transactionType, transactionAmountEditText.getText().toString(), UserData.categories.indexOf(transactionCategorySpinner.getSelectedItem().toString()) + 1, transactionDate, transactionDescriptionEditText.getText().toString());
 
                     refreashListItemsAndChart();
+                    //localDatabaseHelper.getLastMonthExpenses(UserData.userID);
                 }
                 else {
                     editButton.setText("Accept");
                     editTransactionDetails();
                 }
+                //localDatabaseHelper.getLastMonthExpenses(UserData.userID);
+                //setLastMonthPieChart();
             }
         };
     };
@@ -485,6 +495,7 @@ public class DashboardFragment extends Fragment {
             return i;
         }
 
+        @SuppressLint("ViewHolder")
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             view = getLayoutInflater().inflate(R.layout.transaction_listviewitem_template, null);
@@ -494,6 +505,7 @@ public class DashboardFragment extends Fragment {
 
             TransactionData transactionData = this.transactionData.get(i);
 
+            @SuppressLint("SimpleDateFormat")
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
             String transactionDateString = simpleDateFormat.format(transactionData.getDateTime());
 
