@@ -27,6 +27,7 @@ import android.widget.ViewSwitcher;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.BarLineChartBase;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
@@ -86,17 +87,21 @@ public class DashboardFragment extends Fragment {
         BarChartExpenseData barChartExpenseData = localDatabaseHelper.getCustomDateTransactionData(UserData.userID, fromDate, toDate);
 
         float barWidth = 0.2f;
-        float barSpace = 0.1f;
+        float barSpace = 0.0f;
         float groupSpace = 0.4f;
 
         customDatesBarChart.setData(barChartExpenseData.getBarData());
         customDatesBarChart.getData().setHighlightEnabled(false);
         customDatesBarChart.setDescription(null);
-        customDatesBarChart.setPinchZoom(false);
+        customDatesBarChart.setPinchZoom(true);
         customDatesBarChart.setScaleEnabled(false);
         customDatesBarChart.setDrawBarShadow(false);
         customDatesBarChart.setDrawGridBackground(false);
         customDatesBarChart.animateXY(500, 500);
+        customDatesBarChart.setExtraBottomOffset(30);
+        customDatesBarChart.groupBars(0, groupSpace, barSpace);
+        customDatesBarChart.animate();
+        customDatesBarChart.animateX(1500);
 
         Legend barChartLegend = customDatesBarChart.getLegend();
         barChartLegend.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
@@ -110,19 +115,25 @@ public class DashboardFragment extends Fragment {
         barChartLegend.setTextColor(Color.BLACK);
 
         XAxis xAxis = customDatesBarChart.getXAxis();
-        xAxis.setLabelRotationAngle(90);//add1
+        xAxis.setLabelRotationAngle(45);//add1
         xAxis.setAxisLineColor(Color.BLACK);
         xAxis.setGridColor(Color.BLACK);
         xAxis.setTextColor(Color.BLACK);
-        xAxis.setTextSize(12f);
+        xAxis.setTextSize(14f);
+        xAxis.setDrawLabels(true);
+        xAxis.setAvoidFirstLastClipping(true);
+        xAxis.setCenterAxisLabels(true);
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(barChartExpenseData.getCategories()));
         xAxis.setGranularity(1f);
         xAxis.setGranularityEnabled(true);
         xAxis.setCenterAxisLabels(true);
-        xAxis.setDrawGridLines(true);
-        xAxis.setAxisMinimum(0);
+        xAxis.setDrawGridLines(false);
+        //xAxis.setAxisMinimum(0);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(barChartExpenseData.getCategories()));
         xAxis.setLabelCount(barChartExpenseData.getBarData().getEntryCount());
+        LineChart l = new LineChart(getContext());
+        l.getXAxis().setLabelCount(barChartExpenseData.count());
 
         customDatesBarChart.getAxisRight().setEnabled(false);
         YAxis yAxis = customDatesBarChart.getAxisLeft();

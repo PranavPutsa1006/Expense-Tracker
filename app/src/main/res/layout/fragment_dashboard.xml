@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/activity_main_background"
         android:orientation="vertical">
 
@@ -21,9 +21,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
+            android:animateLayoutChanges="true"
+            android:clickable="true"
             app:cardBackgroundColor="@color/dashboardCardViewBackground"
             app:cardCornerRadius="5dp"
-            app:contentPadding="8dp">
+            app:contentPadding="8dp"
+            android:focusable="true">
 
             <RelativeLayout
                 android:layout_width="match_parent"

@@ -1,6 +1,8 @@
 package com.example.savss.expensetracker;
 
 import android.graphics.Color;
+
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -12,6 +14,7 @@ public class BarChartExpenseData {
     private ArrayList<BarEntry> expenseAmounts = new ArrayList<>();
     private ArrayList<BarEntry> incomeAmounts = new ArrayList<>();
     private ArrayList<String> categories = new ArrayList<>();
+    private BarChart chart;
 
     public void add(String category, int expenseAmount, int incomeAmount) {
         expenseAmounts.add(new BarEntry(expenseAmounts.size(), expenseAmount));
@@ -26,8 +29,9 @@ public class BarChartExpenseData {
         BarDataSet incomeBarDataSet = new BarDataSet(incomeAmounts, "Income");
         incomeBarDataSet.setColors(Color.BLUE);
         incomeBarDataSet.setValueTextColor(Color.BLACK);
-
         BarData barData = new BarData(expenseBarDataSet, incomeBarDataSet);
+        //chart.setData(barData);
+        //chart.groupBars(0,0.4f,0.0f);
         barData.setValueTextSize(12f);
         barData.setValueFormatter(new LargeValueFormatter());
         return barData;

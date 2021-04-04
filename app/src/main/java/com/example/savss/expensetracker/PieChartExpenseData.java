@@ -19,13 +19,12 @@ public class PieChartExpenseData {
     }
 
     public PieDataSet getPieDataSet() {
-        PieDataSet pieDataSet = new PieDataSet(expenseAmounts, "Income");
-        pieDataSet.setSliceSpace(10);
+        PieDataSet pieDataSet = new PieDataSet(expenseAmounts, "");
+        pieDataSet.setSliceSpace(5);
         pieDataSet.setValueTextSize(20f);
         pieDataSet.setFormSize(20f);
         pieDataSet.setValueTextColor(Color.WHITE);
-        pieDataSet.setColors(ColorTemplate.JOYFUL_COLORS);
-
+        pieDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         return pieDataSet;
     }
 
