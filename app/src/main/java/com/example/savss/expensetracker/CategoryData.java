@@ -1,45 +1,45 @@
 package com.example.savss.expensetracker;
 
-import java.util.Date;
-
 public class CategoryData {
     private int id;
-    private String amount;
-    private Date dateTime;
-    private String category;
-    private String description;
-    private String transactionType;
+    private String name;
+    private int budget;
+    private String[] shop_names;
+    private int[] transaction_ids;
+    private int spent;
 
-    public  CategoryData(int id, String amount, Date dateTime, String category, String description, String transactionType) {
+    public  CategoryData(int id, String name, int budget, String[] shop_names, int[] transaction_ids, int spent) {
         this.id = id;
-        this.amount = amount;
-        this.dateTime = dateTime;
-        this.category = category;
-        this.description = description;
-        this.transactionType = transactionType.substring(0,1).toUpperCase() + transactionType.substring(1).toLowerCase();
+        this.name = name;
+        this.budget = budget;
+        this.shop_names = shop_names;
+        this.transaction_ids = transaction_ids;
+        this.spent = spent;
+    }
+
+    public  CategoryData(int id, String name, int budget) {
+        this.id = id;
+        this.name = name;
+        this.budget = budget;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getAmount() {
-        return amount;
+    public String getName() {
+        return name;
     }
 
-    public Date getDateTime() {
-        return dateTime;
+    public int getBudget() { return budget; }
+
+    public String[] getShopnames() {
+        return shop_names;
     }
 
-    public String getCategory() {
-        return category;
+    public int[] getTransactionIds() {
+        return transaction_ids;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public String getTransactionType() {
-        return transactionType;
-    }
+    public int getSpent() { return spent; }
 }
