@@ -56,7 +56,6 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, "No record found please Signup ", Toast.LENGTH_LONG).show();
                         Intent inn = new Intent(LoginActivity.this,LoginActivity.class);
                         startActivity(inn);
-
                     }
                     else {
 //                        Toast.makeText(LoginActivity.this, "Verifying credentials... ", Toast.LENGTH_LONG).show();

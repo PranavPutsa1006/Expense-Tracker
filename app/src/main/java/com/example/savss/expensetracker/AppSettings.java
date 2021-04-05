@@ -273,7 +273,7 @@ public class AppSettings extends Fragment {
         }
     }
 
-//    class TransactionListViewAdapter extends BaseAdapter {
+//    class CategoryListViewAdapter extends BaseAdapter {
 //
 //        private ArrayList<CategoryData> categoryData;
 //
