@@ -4,45 +4,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/activity_main_background"
+    android:backgroundTint="#6A1B9A"
     tools:context="com.example.savss.expensetracker.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="91dp"
+        android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="41dp"
+        android:fontFamily="@font/dancing_script_bold"
         android:text="Expense Tracker"
-        android:textColor="#00008B"
-        android:textSize="42sp"
-        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="#FFFFFF"
+        android:textSize="55sp"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="186dp"
+        android:layout_height="37dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="50dp"
-        android:layout_marginBottom="100dp"
-        android:background="#CCE5FF"
+        android:layout_marginBottom="332dp"
+        android:background="#E1BEE7"
+        android:fontFamily="@font/lato"
         android:onClick="loginButton_onClick"
         android:text="@string/loginButtonName"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:textColor="#000" />
+        android:textColor="#4A148C" />
 
     <Button
         android:id="@+id/signUpButton"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="185dp"
+        android:layout_height="37dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="50dp"
-        android:layout_marginBottom="50dp"
-        android:background="#99E5FF"
+        android:layout_marginBottom="272dp"
+        android:background="#9C27B0"
+        android:fontFamily="@font/lato"
         android:onClick="signUpButton_onClick"
         android:text="@string/signUpButtonName"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:textColor="#000" />
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="329dp"
+        android:layout_height="65dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="284dp"
+        android:layout_marginEnd="36dp"
+        android:fontFamily="@font/dancing_script_bold"
+        android:text="Managing budget is now at your fingertips..."
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
 </RelativeLayout>
