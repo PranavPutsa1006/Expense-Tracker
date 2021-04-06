@@ -13,11 +13,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
+        android:fontFamily="@font/lato_bold"
         android:text="@string/signUpButtonName"
-        android:fontFamily="sans-serif-condensed"
         android:textColor="#ffff"
-        android:textSize="32sp"
-        />
+        android:textSize="38sp" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/yourNameInputLayout"
@@ -29,17 +28,18 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="40dp"
         android:inputType="textEmailAddress"
-        android:textColorHint="#606060"
+        android:textColorHint="#FFFFFF"
         android:theme="@style/EditTextHint">
 
         <EditText
             android:id="@+id/yourName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
             android:hint="@string/userNameEditTextHint"
-            android:fontFamily="sans-serif-condensed"
             android:inputType="textPersonName"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -52,17 +52,18 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         android:inputType="textEmailAddress"
-        android:textColorHint="#606060"
+        android:textColorHint="#FFFFFF"
         android:theme="@style/EditTextHint">
 
         <EditText
             android:id="@+id/emailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
             android:hint="@string/emailAddressEditTextHint"
-            android:fontFamily="sans-serif-condensed"
             android:inputType="textEmailAddress"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -75,17 +76,18 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         android:inputType="textEmailAddress"
-        android:textColorHint="#606060"
+        android:textColorHint="#FFFFFF"
         android:theme="@style/EditTextHint">
 
         <EditText
             android:id="@+id/phoneNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
             android:hint="@string/phoneNumberEditTextHint"
-            android:fontFamily="sans-serif-condensed"
             android:inputType="phone"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -99,17 +101,18 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         android:inputType="textEmailAddress"
-        android:textColorHint="#606060"
+        android:textColorHint="#FFFFFF"
         android:theme="@style/EditTextHint">
 
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
             android:hint="@string/passwordEditTextHint"
-            android:fontFamily="sans-serif-condensed"
             android:inputType="textPassword"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -122,29 +125,32 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         android:inputType="textEmailAddress"
-        android:textColorHint="#606060"
+        android:textColorHint="#FFFFFF"
         android:theme="@style/EditTextHint">
 
         <EditText
             android:id="@+id/confirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
             android:hint="@string/confirmPasswordEditTextHint"
-            android:fontFamily="sans-serif-condensed"
             android:inputType="textPassword"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/signUpButton"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_width="107dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/confirmPasswordInputLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
-        android:background="#ccffff"
+        android:background="#E3F2FD"
+        android:fontFamily="@font/lato_bold"
         android:onClick="signUpButton_onClick"
-        android:fontFamily="sans-serif-condensed"
-        android:text="@string/signUpButtonName" />
+        android:text="@string/signUpButtonName"
+        android:textColor="#1565C0"
+        android:textSize="18sp" />
 
 </RelativeLayout>
