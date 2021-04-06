@@ -8,7 +8,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.icu.text.SimpleDateFormat;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
@@ -33,7 +32,10 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher;
 import java.text.DecimalFormat;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class AppSettings extends Fragment {
@@ -152,6 +154,13 @@ public class AppSettings extends Fragment {
         ArrayList<String> categories = DB.getAllCategories();
         ArrayList<Integer> budgets = DB.getAllCategoryBudgets();
         ArrayList<Float> expenses = DB.getCategoryWiseMonthlyExpenses();
+
+        java.text.SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
+        String strCurrentDate = simpleDateFormat.format(currentDate);
+
 
         int count=categories.size(); //has to be retrieved dynamically
         String rv[]=new String[count];

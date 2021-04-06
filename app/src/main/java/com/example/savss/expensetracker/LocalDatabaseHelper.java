@@ -310,7 +310,7 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         }
 
         UserData.categories = getAllCategories();
-        //getCategoryWiseExpenses();
+        getCategoryWiseExpenses();
         getCategoryWiseMonthlyExpenses();
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -532,15 +532,15 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         Date currentDate = calendar.getTime();
 
         String strCurrentDate = simpleDateFormat.format(currentDate);
-        calendar.add(Calendar.DAY_OF_MONTH ,1);
+        calendar.set(Calendar.DAY_OF_MONTH ,1);
         Date lastMonthDate = calendar.getTime();
 
         String strLastMonthDate = simpleDateFormat.format(lastMonthDate);
-        strLastMonthDate = strLastMonthDate.substring(0, strLastMonthDate.length() - 2) + "01";
+//        strLastMonthDate = strLastMonthDate.substring(0, strLastMonthDate.length() - 2) + "01";
 
         ArrayList<Float> expenses = new ArrayList<>();
         String fetchQuery = String.format("select distinct %s, (select sum(%s) from %s where %s = a.%s and %s = 'expense' and %s.%s between '%s' and '%s') from %s as a order by (%s);",
-                CATEGORY_ID, TRANSACTION_AMOUNT, TABLE_TRANSACTION, CATEGORY_ID, CATEGORY_ID, TRANSACTION_TYPE, TABLE_TRANSACTION, TRANSACTION_DATE, strCurrentDate, strLastMonthDate,
+                CATEGORY_ID, TRANSACTION_AMOUNT, TABLE_TRANSACTION, CATEGORY_ID, CATEGORY_ID, TRANSACTION_TYPE, TABLE_TRANSACTION, TRANSACTION_DATE, strLastMonthDate, strCurrentDate,
                 TABLE_TRANSACTION, CATEGORY_ID);
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         Cursor c = sqLiteDatabase.rawQuery(fetchQuery, null);

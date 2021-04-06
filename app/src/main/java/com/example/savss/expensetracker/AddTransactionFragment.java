@@ -167,7 +167,7 @@ public class AddTransactionFragment extends Fragment {
             localDatabaseHelper.addTransaction(String.valueOf(UserData.userID), UserData.categories.indexOf(categorySpinner.getSelectedItem().toString()) + 1, valueOfTransactionType, value.getText().toString(), description.getText().toString(), transactionDate);
 
             clear.callOnClick();
-            //localDatabaseHelper.getLastMonthExpenses(UserData.userID);
+            localDatabaseHelper.getLastMonthExpenses(UserData.userID);
             displayToast(message + "Transaction Added Successfully");
         }
     };
