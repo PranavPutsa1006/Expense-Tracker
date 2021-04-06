@@ -224,7 +224,7 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.MONTH, -1);
+        calendar.add(Calendar.DAY_OF_MONTH ,1);
         Date lastMonthDate = calendar.getTime();
 
         String strLastMonthDate = simpleDateFormat.format(lastMonthDate);
@@ -252,7 +252,7 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         ArrayList<Integer> expenses = new ArrayList<>();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.MONTH, -1);
+        calendar.add(Calendar.DAY_OF_MONTH, 1);
         Date lastMonthDate = calendar.getTime();
         String strCurrentDate = simpleDateFormat.format(lastMonthDate);
         strCurrentDate = strCurrentDate.substring(0, strCurrentDate.length() - 2) + "01";

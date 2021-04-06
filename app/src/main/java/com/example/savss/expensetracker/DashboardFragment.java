@@ -475,7 +475,7 @@ public class DashboardFragment extends Fragment {
     private void displayTransactionlistview() {
         transactionListView = dashboardView.findViewById(R.id.transactionListView);
         Calendar today = Calendar.getInstance();
-        today.add(Calendar.MONTH, -1);
+        today.add(Calendar.DAY_OF_MONTH, -(Calendar.DAY_OF_MONTH+1));
 
         transactionListViewAdapter = new TransactionListViewAdapter(localDatabaseHelper.getTransactionData(UserData.userID, today.getTime(), Calendar.getInstance().getTime()));
         transactionListView.setAdapter(transactionListViewAdapter);

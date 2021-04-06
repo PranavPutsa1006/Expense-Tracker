@@ -40,7 +40,6 @@ import java.util.Date;
 public class AddTransactionFragment extends Fragment {
 
     private String transactionType = "+";
-    private String desc = "description";
     private View addTransactionView;
     private LocalDatabaseHelper localDatabaseHelper;
     private Button income;
