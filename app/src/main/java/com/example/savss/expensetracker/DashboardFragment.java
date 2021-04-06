@@ -157,7 +157,7 @@ public class DashboardFragment extends Fragment {
 
     private void refreashListItemsAndChart() {
         //localDatabaseHelper.getLastMonthExpenses(UserData.userID);
-        //setLastMonthPieChart();
+        setLastMonthPieChart();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date fromDate = null;
         Date toDate = null;
@@ -195,7 +195,7 @@ public class DashboardFragment extends Fragment {
         Calendar today = Calendar.getInstance();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         toDayTextView.setText(simpleDateFormat.format(today.getTime()));
-        today.add(Calendar.MONTH, -1);
+        today.add(Calendar.DAY_OF_MONTH, -(Calendar.DAY_OF_MONTH));
         fromDayTextView.setText(simpleDateFormat.format(today.getTime()));
 
         fromDayTextView.setOnClickListener(new View.OnClickListener() {
@@ -477,7 +477,7 @@ public class DashboardFragment extends Fragment {
     private void displayTransactionlistview() {
         transactionListView = dashboardView.findViewById(R.id.transactionListView);
         Calendar today = Calendar.getInstance();
-        today.add(Calendar.MONTH, -1);
+        today.add(Calendar.DAY_OF_MONTH, -(Calendar.DAY_OF_MONTH));
 
         transactionListViewAdapter = new TransactionListViewAdapter(localDatabaseHelper.getTransactionData(UserData.userID, today.getTime(), Calendar.getInstance().getTime()));
         transactionListView.setAdapter(transactionListViewAdapter);
