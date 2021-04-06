@@ -231,7 +231,7 @@ public class DashboardFragment extends Fragment {
         @Override
         public void onDateSet(DatePicker datePicker, int year, int month, int day) {
             month++;
-            String pickedDate = day + "-" + month + "-" + year;
+            String pickedDate = day + "/" + month + "/" + year;
             fromDayTextView.setText(pickedDate);
             refreashListItemsAndChart();
         }
