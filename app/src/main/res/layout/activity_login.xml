@@ -76,12 +76,12 @@
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="@string/loginButtonName"
         android:layout_below="@+id/passwordInputLayout"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
-        android:background="@drawable/login_button_background"
-        android:onClick="loginValidation"/>
+        android:background="#FFFFFF"
+        android:onClick="loginValidation"
+        android:text="@string/loginButtonName" />
 
 </RelativeLayout>

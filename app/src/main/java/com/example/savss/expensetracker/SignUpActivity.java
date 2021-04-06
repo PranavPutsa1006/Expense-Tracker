@@ -41,18 +41,21 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
-        toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
-        database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef;
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        firebaseFirestore=FirebaseFirestore.getInstance();
-        firebaseAuth=FirebaseAuth.getInstance();
+            setContentView(R.layout.activity_sign_up);
+            toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
+            database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef;
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            firebaseFirestore = FirebaseFirestore.getInstance();
+            firebaseAuth = FirebaseAuth.getInstance();
+
 
     }
 
     public void signUpButton_onClick(View view) {
         // TODO: OTP for Phone Number validation
+
+
 
         final EditText yourName = findViewById(R.id.yourName);
         final EditText emailAddress = findViewById(R.id.emailAddress);
@@ -61,8 +64,8 @@ public class SignUpActivity extends AppCompatActivity {
         EditText confirmPassword = findViewById(R.id.confirmPassword);
 
         if (isSignUpDetailsValid(yourName, emailAddress, phoneNumber, password, confirmPassword)) {
-            final LocalDatabaseHelper localDatabaseHelper = new LocalDatabaseHelper(this, null, null, 1);
 
+            final LocalDatabaseHelper localDatabaseHelper = new LocalDatabaseHelper(this, null, null, 1);
             boolean addUserResult = localDatabaseHelper.tryAddUser(yourName.getText().toString(), emailAddress.getText().toString(), phoneNumber.getText().toString(), password.getText().toString());
 
             if (addUserResult) {
@@ -133,6 +136,8 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private boolean isSignUpDetailsValid(EditText yourName, EditText emailAddress, EditText phoneNumber, EditText password, EditText confirmPassword) {
+
+
         if (yourName.getText().toString().isEmpty()){
             displayError(R.string.emptyYourNameError, yourName);
             return false;

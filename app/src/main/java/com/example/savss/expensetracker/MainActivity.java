@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,8 +21,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void signUpButton_onClick(View v){
-        Intent toSignUpPage = new Intent(this, SignUpActivity.class);
-        startActivity(toSignUpPage);
+        final LocalDatabaseHelper localDatabaseHelper = new LocalDatabaseHelper(this, null, null, 1);
+        if(!localDatabaseHelper.isExisting()) {
+            Intent toSignUpPage = new Intent(this, SignUpActivity.class);
+            startActivity(toSignUpPage);
+        }else{
+            Toast.makeText(getApplicationContext(), "Only one account possible", Toast.LENGTH_LONG).show();
+        }
     }
 
 }

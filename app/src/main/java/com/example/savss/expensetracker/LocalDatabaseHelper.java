@@ -112,6 +112,21 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    //del
+    public boolean isExisting(){
+        String checkQuery = String.format("SELECT * FROM %s", TABLE_USERS);
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(checkQuery, null);
+        if (cursor.getCount() > 0) {
+            sqLiteDatabase.close();
+            return true;
+        }
+        else {
+            sqLiteDatabase.close();
+            return false;
+        }
+    }
+
     public String getPassword(String loginID, IDType idType) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
