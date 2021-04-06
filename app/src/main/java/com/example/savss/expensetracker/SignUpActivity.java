@@ -184,7 +184,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         if (address.getText().toString().isEmpty()){
-            displayError(R.string.emptyAddressError, phoneNumber);
+            displayError(R.string.emptyAddressError, address);
             return false;
         }
 
@@ -194,7 +194,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         if (dob.getText().toString().isEmpty()){
-            displayError(R.string.emptyDobError, phoneNumber);
+            displayError(R.string.emptyDobError, dob);
             return false;
         }
 
@@ -271,14 +271,14 @@ public class SignUpActivity extends AppCompatActivity {
     }
     private boolean isPhoneValid(String Phone)
     {
-        Pattern pat = Pattern.compile("(0/91)?[7-9][0-9]{9}");
+        Pattern pat = Pattern.compile("(0|91|[+]91)?[6-9][0-9]{9}");
         Matcher m = pat.matcher(Phone);
         return (m.find() && m.group().equals(Phone));
     }
 
     private boolean isAddressValid(String Name)
     {
-        String nameRegex = "^[a-zA-z0-9/\\\\'(),\\-\\s]{2,255}";
+        String nameRegex = "^[a-zA-z0-9./\\\\'(),\\-\\s]{2,255}";
         Pattern pat = Pattern.compile(nameRegex);
         return pat.matcher(Name).matches();
     }

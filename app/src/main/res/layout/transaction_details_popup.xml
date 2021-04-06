@@ -124,7 +124,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
             android:text="01/02/2018"
-            android:textColor="#FFFFFF"
+            android:textColor="#1565C0"
             android:textSize="20sp" />
 
         <TextView

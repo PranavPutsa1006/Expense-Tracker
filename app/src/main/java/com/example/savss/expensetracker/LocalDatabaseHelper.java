@@ -310,7 +310,8 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         }
 
         UserData.categories = getAllCategories();
-        getCategoryWiseExpenses();
+        //getCategoryWiseExpenses();
+        getCategoryWiseMonthlyExpenses();
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("category_id",1);
@@ -505,6 +506,41 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         ArrayList<Float> expenses = new ArrayList<>();
         String fetchQuery = String.format("select distinct %s, (select sum(%s) from %s where %s = a.%s and %s = 'expense') from %s as a order by (%s);",
                 CATEGORY_ID, TRANSACTION_AMOUNT, TABLE_TRANSACTION, CATEGORY_ID, CATEGORY_ID, TRANSACTION_TYPE,
+                TABLE_TRANSACTION, CATEGORY_ID);
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        Cursor c = sqLiteDatabase.rawQuery(fetchQuery, null);
+        c.moveToFirst();
+        while (!c.isAfterLast()) {
+
+            if (c.getString(1) == null) {
+                expenses.add((float) 0.0);
+            }
+            else {
+                expenses.add(Float.parseFloat(c.getString(1)));
+            }
+            c.moveToNext();
+        }
+        sqLiteDatabase.close();
+        return  expenses;
+
+    }
+
+    public ArrayList<Float> getCategoryWiseMonthlyExpenses() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
+
+        String strCurrentDate = simpleDateFormat.format(currentDate);
+        calendar.add(Calendar.DAY_OF_MONTH ,1);
+        Date lastMonthDate = calendar.getTime();
+
+        String strLastMonthDate = simpleDateFormat.format(lastMonthDate);
+        strLastMonthDate = strLastMonthDate.substring(0, strLastMonthDate.length() - 2) + "01";
+
+        ArrayList<Float> expenses = new ArrayList<>();
+        String fetchQuery = String.format("select distinct %s, (select sum(%s) from %s where %s = a.%s and %s = 'expense' and %s.%s between '%s' and '%s') from %s as a order by (%s);",
+                CATEGORY_ID, TRANSACTION_AMOUNT, TABLE_TRANSACTION, CATEGORY_ID, CATEGORY_ID, TRANSACTION_TYPE, TABLE_TRANSACTION, TRANSACTION_DATE, strCurrentDate, strLastMonthDate,
                 TABLE_TRANSACTION, CATEGORY_ID);
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         Cursor c = sqLiteDatabase.rawQuery(fetchQuery, null);

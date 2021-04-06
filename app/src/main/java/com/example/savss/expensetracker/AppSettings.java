@@ -46,6 +46,8 @@ public class AppSettings extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LocalDatabaseHelper DB = new LocalDatabaseHelper(getActivity(), null, null, 1);
+        DB.initializeUserData(UserData.userID);
     }
 
     @Override
@@ -107,7 +109,7 @@ public class AppSettings extends Fragment {
         LocalDatabaseHelper localDatabaseHelper = new LocalDatabaseHelper(getActivity(), null, null, 1);
         ArrayList<String> categories = localDatabaseHelper.getAllCategories();
         ArrayList<Integer> budgets = localDatabaseHelper.getAllCategoryBudgets();
-        ArrayList<Float> expense = localDatabaseHelper.getCategoryWiseExpenses();
+        ArrayList<Float> expense = localDatabaseHelper.getCategoryWiseMonthlyExpenses();
 
         int categoryIndex = categories.indexOf(category);
         float finalAmount = expense.get(categoryIndex) + amount;
@@ -149,7 +151,7 @@ public class AppSettings extends Fragment {
         LocalDatabaseHelper DB = new LocalDatabaseHelper(getActivity(), null, null, 1);
         ArrayList<String> categories = DB.getAllCategories();
         ArrayList<Integer> budgets = DB.getAllCategoryBudgets();
-        ArrayList<Float> expenses = DB.getCategoryWiseExpenses();
+        ArrayList<Float> expenses = DB.getCategoryWiseMonthlyExpenses();
 
         int count=categories.size(); //has to be retrieved dynamically
         String rv[]=new String[count];

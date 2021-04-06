@@ -167,7 +167,7 @@ public class AddTransactionFragment extends Fragment {
             localDatabaseHelper.addTransaction(String.valueOf(UserData.userID), UserData.categories.indexOf(categorySpinner.getSelectedItem().toString()) + 1, valueOfTransactionType, value.getText().toString(), description.getText().toString(), transactionDate);
 
             clear.callOnClick();
-            localDatabaseHelper.getLastMonthExpenses(UserData.userID);
+            //localDatabaseHelper.getLastMonthExpenses(UserData.userID);
             displayToast(message + "Transaction Added Successfully");
         }
     };
@@ -175,7 +175,7 @@ public class AddTransactionFragment extends Fragment {
     private String notifyIfExceededLimit(String category, float amount) {
         ArrayList<String> categories = localDatabaseHelper.getAllCategories();
         ArrayList<Integer> budgets = localDatabaseHelper.getAllCategoryBudgets();
-        ArrayList<Float> expense = localDatabaseHelper.getCategoryWiseExpenses();
+        ArrayList<Float> expense = localDatabaseHelper.getCategoryWiseMonthlyExpenses();
 
         int categoryIndex = categories.indexOf(category);
         float finalAmount = expense.get(categoryIndex) + amount;
