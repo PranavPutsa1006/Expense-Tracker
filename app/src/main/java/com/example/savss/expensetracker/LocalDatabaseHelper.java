@@ -112,6 +112,20 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public boolean isExisting(){
+        String checkQuery = String.format("SELECT * FROM %s", TABLE_USERS);
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery(checkQuery, null);
+        if (cursor.getCount() > 0) {
+            sqLiteDatabase.close();
+            return true;
+        }
+        else {
+            sqLiteDatabase.close();
+            return false;
+        }
+    }
+
     public String getPassword(String loginID, IDType idType) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
@@ -203,9 +217,9 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         TransactionType tType = TransactionType.Income;
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         String fetchDataQuery = String.format("SELECT SUM(%s), %s FROM %s, %s WHERE %s != '%s' AND %s.%s = %s.%s AND %s = %s AND %s = '%s' GROUP BY (%s.%s);",
-                                                TRANSACTION_AMOUNT, CATEGORY_NAME, TABLE_TRANSACTION, TABLE_CATEGORY, TRANSACTION_TYPE, tType.toString(),
-                                                TABLE_CATEGORY, CATEGORY_ID, TABLE_TRANSACTION, TRANSACTION_FKEY_CATEGORY_ID, TRANSACTION_FKEY_USERS_ID,
-                                                userID, TRANSACTION_DATE, "2018-02-22", TABLE_TRANSACTION, TRANSACTION_FKEY_CATEGORY_ID);
+                TRANSACTION_AMOUNT, CATEGORY_NAME, TABLE_TRANSACTION, TABLE_CATEGORY, TRANSACTION_TYPE, tType.toString(),
+                TABLE_CATEGORY, CATEGORY_ID, TABLE_TRANSACTION, TRANSACTION_FKEY_CATEGORY_ID, TRANSACTION_FKEY_USERS_ID,
+                userID, TRANSACTION_DATE, "2018-02-22", TABLE_TRANSACTION, TRANSACTION_FKEY_CATEGORY_ID);
         //System.out.println(fetchDataQuery);
 
         Cursor c = sqLiteDatabase.rawQuery(fetchDataQuery, null);
@@ -234,8 +248,8 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         TransactionType tType = TransactionType.Expense;
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         String fetchQuery = String.format("select sum(%s), %s from %s, %s where %s = '%s' and %s.%s = %s.%s and %s = %s and %s > '%s' group by(%s.%s);",
-                                            TRANSACTION_AMOUNT, CATEGORY_NAME, TABLE_TRANSACTION, TABLE_CATEGORY, TRANSACTION_TYPE, tType.toString(), TABLE_CATEGORY,
-                                            CATEGORY_ID, TABLE_TRANSACTION, TRANSACTION_FKEY_CATEGORY_ID, TRANSACTION_FKEY_USERS_ID, userID, TRANSACTION_DATE,
+                TRANSACTION_AMOUNT, CATEGORY_NAME, TABLE_TRANSACTION, TABLE_CATEGORY, TRANSACTION_TYPE, tType.toString(), TABLE_CATEGORY,
+                CATEGORY_ID, TABLE_TRANSACTION, TRANSACTION_FKEY_CATEGORY_ID, TRANSACTION_FKEY_USERS_ID, userID, TRANSACTION_DATE,
                 strLastMonthDate, TABLE_TRANSACTION, TRANSACTION_FKEY_CATEGORY_ID);
         //System.out.println(fetchQuery);
         Cursor c = sqLiteDatabase.rawQuery(fetchQuery, null);
@@ -476,8 +490,8 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
     public void updateUserData(int userID, String name, String email, String address, String phone, String password) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         String updateQuery = String.format("update %s set %s='%s', %s='%s', %s='%s', %s='%s' where %s = %s;", TABLE_USERS,
-                                            USERS_NAME, name, USERS_EMAIL, email, USERS_PHONENUMBER, phone,
-                                            USERS_PASSWORD, password, USERS_ID, userID);
+                USERS_NAME, name, USERS_EMAIL, email, USERS_PHONENUMBER, phone,
+                USERS_PASSWORD, password, USERS_ID, userID);
         sqLiteDatabase.execSQL(updateQuery);
         sqLiteDatabase.close();
     }
@@ -485,8 +499,8 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
     public ArrayList<Float> getCategoryWiseExpenses() {
         ArrayList<Float> expenses = new ArrayList<>();
         String fetchQuery = String.format("select distinct %s, (select sum(%s) from %s where %s = a.%s and %s = 'expense') from %s as a order by (%s);",
-                                            CATEGORY_ID, TRANSACTION_AMOUNT, TABLE_TRANSACTION, CATEGORY_ID, CATEGORY_ID, TRANSACTION_TYPE,
-                                            TABLE_TRANSACTION, CATEGORY_ID);
+                CATEGORY_ID, TRANSACTION_AMOUNT, TABLE_TRANSACTION, CATEGORY_ID, CATEGORY_ID, TRANSACTION_TYPE,
+                TABLE_TRANSACTION, CATEGORY_ID);
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         Cursor c = sqLiteDatabase.rawQuery(fetchQuery, null);
         c.moveToFirst();
