@@ -14,6 +14,8 @@
     <string name="emptyPasswordError">Enter Password</string>
     <string name="emptyYourNameError">Enter your name</string>
     <string name="emptyEmailAddressError">Enter your Email Address</string>
+    <string name="emptyAddressError">Enter your Address</string>
+    <string name="emptyDobError">Enter your Date of Birth</string>
     <string name="emptyPhoneNumberError">Enter your Phone Number</string>
     <string name="emptyConfirmPasswordError">Verify your Password in Confirm Password</string>
     <string name="passwordNotMatchError">Password did not match</string>

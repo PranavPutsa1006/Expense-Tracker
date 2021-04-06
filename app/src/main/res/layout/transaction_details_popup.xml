@@ -13,12 +13,13 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/lato_bold"
         android:text="#ID"
-        android:textColor="#000000"
+        android:textColor="#1565C0"
         android:textColorHighlight="#000000"
         android:textColorHint="#808080"
         android:textColorLink="#808080"
-        android:textSize="20sp" />
+        android:textSize="24sp" />
 
     <ViewSwitcher
         android:id="@+id/transactionTypeViewSwitcher"
@@ -37,8 +38,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#FFFFFF"
+            android:fontFamily="@font/lato"
             android:text="Transaction Type"
-            android:textColor="#000000"
+            android:textColor="#1565C0"
             android:textSize="20sp" />
 
         <TextView
@@ -70,8 +72,9 @@
             android:id="@+id/transactionAmountTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato_bold"
             android:text="Amount"
-            android:textColor="#000000"
+            android:textColor="#1565C0"
             android:textSize="20sp" />
 
         <EditText
@@ -95,8 +98,9 @@
             android:id="@+id/transactionCategoryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
             android:text="Category"
-            android:textColor="#808080"
+            android:textColor="#1565C0"
             android:textSize="20sp" />
 
         <Spinner
@@ -118,8 +122,9 @@
             android:id="@+id/transactionDateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
             android:text="01/02/2018"
-            android:textColor="#000000"
+            android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
         <TextView
@@ -148,9 +153,10 @@
             android:id="@+id/transactionDescriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
             android:gravity="center_horizontal"
             android:text="Description"
-            android:textColor="#808080"
+            android:textColor="#1565C0"
             android:textSize="20sp" />
 
         <EditText
@@ -170,10 +176,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:background="#00BCD4"
+        android:background="#1565C0"
+        android:fontFamily="@font/lato_bold"
         android:foregroundTint="#00BCD4"
         android:text="Close"
-        android:textColor="#808080" />
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/deleteButton"
@@ -183,10 +190,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="#00BCD4"
+        android:background="#EF5350"
+        android:fontFamily="@font/lato_bold"
         android:text="Delete"
-        android:textColor="#808080" />
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/editButton"
@@ -197,8 +204,9 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:background="#00BCD4"
+        android:background="#1565C0"
+        android:fontFamily="@font/lato_bold"
         android:text="Edit"
-        android:textColor="#808080" />
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>

@@ -18,7 +18,7 @@ import android.widget.Button;
 public class ProfileManagement extends Fragment {
 
     private ViewSwitcher viewSwitcher;
-    Button btnNext, btnPrev, btn,logOut;
+    Button btnNext, btnPrev, btn, logOut;
     private TextView name;
     private TextView email;
     private TextView address;
@@ -44,19 +44,17 @@ public class ProfileManagement extends Fragment {
         btnPrev = (Button) viewapp.findViewById(R.id.updateProfile);
         btn = (Button) viewapp.findViewById(R.id.cancel);
         logOut = (Button) viewapp.findViewById(R.id.LO);
-        viewSwitcher = (ViewSwitcher) viewapp.findViewById(R.id.profileViewSwitcher);
-        btnNext.setOnClickListener(setViewSwitcherNext);
-        btnPrev.setOnClickListener(setViewSwitcherPrev);
-        btn.setOnClickListener(setViewSwitcherPrev1);
-
-        logOut.setOnClickListener(new View.OnClickListener() {
+        logOut.setOnClickListener(new View.OnClickListener() {  //this is inside oncreate view
             public void onClick(View view) {
                 Intent myIntent = new Intent(view.getContext(), MainActivity.class);
                 startActivityForResult(myIntent, 0);
             }
 
         });
-
+        viewSwitcher = (ViewSwitcher) viewapp.findViewById(R.id.profileViewSwitcher);
+        btnNext.setOnClickListener(setViewSwitcherNext);
+        btnPrev.setOnClickListener(setViewSwitcherPrev);
+        btn.setOnClickListener(setViewSwitcherPrev1);
         setName();
         setEmail();
         setAddress();
@@ -81,7 +79,7 @@ public class ProfileManagement extends Fragment {
             if (!password.getText().toString().equals(confirmPassword.getText().toString())) {
                 displayError(R.string.passwordNotMatchError, confirmPassword);
             } else {
-                localDatabaseHelper.updateUserData(UserData.userID, name.getText().toString(), email.getText().toString(), address.getText().toString(), phone.getText().toString(), password.getText().toString());
+                localDatabaseHelper.updateUserData(UserData.userID, name.getText().toString(), email.getText().toString(), address.getText().toString(), dob.getText().toString(), phone.getText().toString(), password.getText().toString());
                 localDatabaseHelper.initializeUserData(UserData.userID);
                 viewSwitcher.setDisplayedChild(0);
                 setName();
@@ -90,9 +88,6 @@ public class ProfileManagement extends Fragment {
                 setPhoneNumber();
                 setDOB();
                 setPassword();
-
-                //Intent logout = new Intent(this, MainActivity.class);
-                //startActivity(logout);
             }
         }
     };

@@ -1,18 +1,28 @@
 package com.example.savss.expensetracker;
 
+import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.icu.text.SimpleDateFormat;
 import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -34,38 +44,42 @@ public class SignUpActivity extends AppCompatActivity {
 
     Toast toast;
     FirebaseDatabase database;
+    public String add = "";
+    public String dateofb = "";
  private FirebaseAuth firebaseAuth;
  FirebaseFirestore firebaseFirestore;
  FirebaseUser firebaseUser;
 
+    @SuppressLint("ShowToast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_sign_up);
-            toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
-            database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef;
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            firebaseFirestore = FirebaseFirestore.getInstance();
-            firebaseAuth = FirebaseAuth.getInstance();
-
+        setContentView(R.layout.activity_sign_up);
+        toast = Toast.makeText(this, "", Toast.LENGTH_SHORT);
+        database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef;
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        firebaseFirestore=FirebaseFirestore.getInstance();
+        firebaseAuth=FirebaseAuth.getInstance();
 
     }
 
     public void signUpButton_onClick(View view) {
         // TODO: OTP for Phone Number validation
 
-
-
         final EditText yourName = findViewById(R.id.yourName);
         final EditText emailAddress = findViewById(R.id.emailAddress);
         final EditText phoneNumber = findViewById(R.id.phoneNumber);
+        final EditText address = findViewById(R.id.address);
+        final EditText dob = findViewById(R.id.date);
         final EditText password = findViewById(R.id.password);
         EditText confirmPassword = findViewById(R.id.confirmPassword);
 
-        if (isSignUpDetailsValid(yourName, emailAddress, phoneNumber, password, confirmPassword)) {
-
+        if (isSignUpDetailsValid(yourName, emailAddress, phoneNumber, address, dob, password, confirmPassword)) {
             final LocalDatabaseHelper localDatabaseHelper = new LocalDatabaseHelper(this, null, null, 1);
+
+            UserData.address = address.getText().toString();
+            UserData.dateOfBirth = dob.getText().toString();
             boolean addUserResult = localDatabaseHelper.tryAddUser(yourName.getText().toString(), emailAddress.getText().toString(), phoneNumber.getText().toString(), password.getText().toString());
 
             if (addUserResult) {
@@ -89,7 +103,8 @@ public class SignUpActivity extends AppCompatActivity {
                         hashMap.put("name",yourName.getText().toString().trim());
                         hashMap.put("email",emailAddress.getText().toString());
                         hashMap.put("phonenum",phoneNumber.getText().toString().trim());
-                        hashMap.put("password",password.getText().toString());
+                        hashMap.put("address",address.getText().toString());
+                        hashMap.put("dob",dob.getText().toString());
                         firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
                         String uid=firebaseUser.getUid();
                         firebaseFirestore.collection("users").document(phoneNumber.getText().toString()).set(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -124,6 +139,7 @@ public class SignUpActivity extends AppCompatActivity {
             });
 
                 Intent toDashboard = new Intent(this, HomeActivity.class);
+
 //                toDashboard.putExtra(LocalDatabaseHelper.COLUMN_ID, localDatabaseHelper.getUserID(emailAddress.getText().toString()));
                 startActivity(toDashboard);
                 displayTosat(R.string.userSuccessfullyAdded);
@@ -135,9 +151,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    private boolean isSignUpDetailsValid(EditText yourName, EditText emailAddress, EditText phoneNumber, EditText password, EditText confirmPassword) {
 
-
+    private boolean isSignUpDetailsValid(EditText yourName, EditText emailAddress, EditText phoneNumber, EditText address, EditText dob, EditText password, EditText confirmPassword) {
         if (yourName.getText().toString().isEmpty()){
             displayError(R.string.emptyYourNameError, yourName);
             return false;
@@ -165,6 +180,26 @@ public class SignUpActivity extends AppCompatActivity {
 
         if (!isPhoneValid(phoneNumber.getText().toString())) {
             displayError("Enter a valid Phone Number", phoneNumber);
+            return false;
+        }
+
+        if (address.getText().toString().isEmpty()){
+            displayError(R.string.emptyAddressError, phoneNumber);
+            return false;
+        }
+
+        if (!isAddressValid(address.getText().toString())) {
+            displayError("Enter a valid Address", address);
+            return false;
+        }
+
+        if (dob.getText().toString().isEmpty()){
+            displayError(R.string.emptyDobError, phoneNumber);
+            return false;
+        }
+
+        if (!isDobValid(dob.getText().toString())) {
+            displayError("Enter a valid Date of Birth", dob);
             return false;
         }
 
@@ -240,6 +275,22 @@ public class SignUpActivity extends AppCompatActivity {
         Matcher m = pat.matcher(Phone);
         return (m.find() && m.group().equals(Phone));
     }
+
+    private boolean isAddressValid(String Name)
+    {
+        String nameRegex = "^[a-zA-z0-9/\\\\'(),\\-\\s]{2,255}";
+        Pattern pat = Pattern.compile(nameRegex);
+        return pat.matcher(Name).matches();
+    }
+
+    private boolean isDobValid(String Name)
+    {
+        String nameRegex = "^(?:0[1-9]|[12]\\d|3[01])([/.-])(?:0[1-9]|1[012])\\1(?:19|20)\\d\\d";
+        Pattern pat = Pattern.compile(nameRegex);
+        return pat.matcher(Name).matches();
+    }
+
+
 
     private boolean isPasswordValid(String password)
     {
