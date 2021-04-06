@@ -16,7 +16,7 @@
         android:fontFamily="@font/lato_bold"
         android:text="@string/loginButtonName"
         android:textColor="#FFFFFF"
-        android:textSize="32sp"
+        android:textSize="36sp"
         android:textStyle="bold" />
 
     <android.support.design.widget.TextInputLayout
@@ -34,11 +34,12 @@
         <EditText
             android:id="@+id/emailAddress"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="38dp"
             android:fontFamily="@font/lato"
             android:hint="@string/idEditTextHint"
             android:inputType="textEmailAddress"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -60,7 +61,8 @@
             android:fontFamily="@font/lato"
             android:hint="@string/passwordEditTextHint"
             android:inputType="textPassword"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
     </android.support.design.widget.TextInputLayout>
 
 
@@ -80,12 +82,14 @@
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:text="@string/loginButtonName"
         android:layout_below="@+id/passwordInputLayout"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/login_button_background"
-        android:onClick="loginValidation"/>
+        android:fontFamily="@font/lato_bold"
+        android:onClick="loginValidation"
+        android:text="@string/loginButtonName"
+        android:textSize="18sp" />
 
 </RelativeLayout>
