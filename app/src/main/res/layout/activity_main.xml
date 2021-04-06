@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,39 +11,54 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="200dp"
+        android:fontFamily="cursive"
         android:text="Expense Tracker"
-        android:textColor="#00008B"
-        android:textSize="42sp"
-        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="#FFFFFF"
+        android:textSize="46sp"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="193dp"
+        android:layout_height="35dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="50dp"
-        android:layout_marginBottom="100dp"
-        android:background="#CCE5FF"
+        android:layout_marginBottom="266dp"
+        android:background="#B3E5FC"
+        android:fontFamily="@font/lato"
         android:onClick="loginButton_onClick"
         android:text="@string/loginButtonName"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:textColor="#000" />
+        android:textColor="#000"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/signUpButton"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="193dp"
+        android:layout_height="34dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="50dp"
-        android:layout_marginBottom="50dp"
-        android:background="#99E5FF"
+        android:layout_marginBottom="216dp"
+        android:background="#1976D2"
+        android:fontFamily="@font/lato"
         android:onClick="signUpButton_onClick"
         android:text="@string/signUpButtonName"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:textColor="#000" />
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        tools:fontFamily="@font/lato" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="277dp"
+        android:fontFamily="cursive"
+        android:text="Managing budget is now at your fingertips..."
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
 </RelativeLayout>
