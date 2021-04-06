@@ -433,6 +433,7 @@ public class DashboardFragment extends Fragment {
                     localDatabaseHelper.updateTransactionDetails(transactionData.getId(), transactionType, transactionAmountEditText.getText().toString(), UserData.categories.indexOf(transactionCategorySpinner.getSelectedItem().toString()) + 1, transactionDate, transactionDescriptionEditText.getText().toString());
 
                     refreashListItemsAndChart();
+
                     //localDatabaseHelper.getLastMonthExpenses(UserData.userID);
                 }
                 else {
