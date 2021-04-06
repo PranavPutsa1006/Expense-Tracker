@@ -75,7 +75,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
-        android:inputType="textEmailAddress"
+        android:inputType="phone"
         android:textColorHint="#FFFFFF"
         android:theme="@style/EditTextHint">
 
@@ -100,7 +100,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
-        android:inputType="textEmailAddress"
+        android:inputType="textPostalAddress"
         android:textColorHint="#FFFFFF"
         android:theme="@style/EditTextHint">
 
@@ -110,7 +110,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
             android:hint="ADDRESS"
-            android:inputType="textEmailAddress"
+            android:inputType="textPostalAddress"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />
 
@@ -125,7 +125,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
-        android:inputType="text|date"
+        android:inputType="date"
         android:textColorHint="#FFFFFF"
         android:theme="@style/EditTextHint">
 
@@ -134,7 +134,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/lato"
-            android:hint="DATE OF BIRTH - MM/DD/YY"
+            android:hint="DATE OF BIRTH - DD/MM/YY"
             android:inputType="textEmailAddress"
             android:textColor="#FFFFFF"
             android:textSize="16sp" />

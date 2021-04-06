@@ -27,6 +27,8 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
     public static final String USERS_ID = "user_id";
     public static final String USERS_NAME = "name";
     public static final String USERS_EMAIL = "email";
+    public static final String USERS_ADDRESS = "address";
+    public static final String USERS_DOB = "01/01/2000";
     public static final String USERS_PHONENUMBER = "phonenumber";
     public static final String USERS_PASSWORD = "password";
 
@@ -290,8 +292,8 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
 
     public void initializeUserData(int userID) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
-        String tempAddr = "221 Baker Street";
-        String DOB = "03-06-1997";
+        String tempAddr = UserData.address;
+        String DOB = UserData.dateOfBirth;
         String fetchQuery = String.format("select %s, %s, %s, %s from %s where %s = %s;",
                 USERS_NAME, USERS_EMAIL, USERS_PHONENUMBER, USERS_PASSWORD, TABLE_USERS, USERS_ID, String.valueOf(userID));
         Cursor c = sqLiteDatabase.rawQuery(fetchQuery, null);
@@ -487,8 +489,11 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.close();
     }
 
-    public void updateUserData(int userID, String name, String email, String address, String phone, String password) {
+    public void updateUserData(int userID, String name, String email, String address, String dob, String phone, String password) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        SignUpActivity sa = new SignUpActivity();
+        UserData.address = address;
+        UserData.dateOfBirth = dob;
         String updateQuery = String.format("update %s set %s='%s', %s='%s', %s='%s', %s='%s' where %s = %s;", TABLE_USERS,
                 USERS_NAME, name, USERS_EMAIL, email, USERS_PHONENUMBER, phone,
                 USERS_PASSWORD, password, USERS_ID, userID);

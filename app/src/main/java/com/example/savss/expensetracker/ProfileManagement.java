@@ -70,7 +70,7 @@ public class ProfileManagement extends Fragment {
             if (!password.getText().toString().equals(confirmPassword.getText().toString())) {
                 displayError(R.string.passwordNotMatchError, confirmPassword);
             } else {
-                localDatabaseHelper.updateUserData(UserData.userID, name.getText().toString(), email.getText().toString(), address.getText().toString(), phone.getText().toString(), password.getText().toString());
+                localDatabaseHelper.updateUserData(UserData.userID, name.getText().toString(), email.getText().toString(), address.getText().toString(), dob.getText().toString(), phone.getText().toString(), password.getText().toString());
                 localDatabaseHelper.initializeUserData(UserData.userID);
                 viewSwitcher.setDisplayedChild(0);
                 setName();
