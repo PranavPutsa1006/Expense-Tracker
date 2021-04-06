@@ -36,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(toLoginPage);
     }
 
+    @Override
+    public void onBackPressed () {
+        Intent toLoginPage = new Intent(this, LoginActivity.class);
+        startActivity(toLoginPage);
+    }
+
     public void signUpButton_onClick(View v){
         final LocalDatabaseHelper localDatabaseHelper = new LocalDatabaseHelper(this, null, null, 1);
         if(!localDatabaseHelper.isExisting()) {
