@@ -1,6 +1,7 @@
 package com.example.savss.expensetracker;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v4.app.Fragment;
@@ -17,7 +18,7 @@ import android.widget.Button;
 public class ProfileManagement extends Fragment {
 
     private ViewSwitcher viewSwitcher;
-    Button btnNext, btnPrev, btn;
+    Button btnNext, btnPrev, btn,logOut;
     private TextView name;
     private TextView email;
     private TextView address;
@@ -42,10 +43,20 @@ public class ProfileManagement extends Fragment {
         btnNext = (Button) viewapp.findViewById(R.id.changeProfile);
         btnPrev = (Button) viewapp.findViewById(R.id.updateProfile);
         btn = (Button) viewapp.findViewById(R.id.cancel);
+        logOut = (Button) viewapp.findViewById(R.id.LO);
         viewSwitcher = (ViewSwitcher) viewapp.findViewById(R.id.profileViewSwitcher);
         btnNext.setOnClickListener(setViewSwitcherNext);
         btnPrev.setOnClickListener(setViewSwitcherPrev);
         btn.setOnClickListener(setViewSwitcherPrev1);
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(view.getContext(), MainActivity.class);
+                startActivityForResult(myIntent, 0);
+            }
+
+        });
+
         setName();
         setEmail();
         setAddress();
@@ -79,6 +90,9 @@ public class ProfileManagement extends Fragment {
                 setPhoneNumber();
                 setDOB();
                 setPassword();
+
+                //Intent logout = new Intent(this, MainActivity.class);
+                //startActivity(logout);
             }
         }
     };

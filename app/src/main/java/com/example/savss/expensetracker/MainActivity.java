@@ -15,12 +15,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    @Override
+    public void onBackPressed () {
+
+    }
+
     public void loginButton_onClick(View v){
         Intent toLoginPage = new Intent(this, LoginActivity.class);
         startActivity(toLoginPage);
     }
 
     public void signUpButton_onClick(View v){
+        //Intent toSignUpPage = new Intent(this, SignUpActivity.class);
+        //startActivity(toSignUpPage);
+
         final LocalDatabaseHelper localDatabaseHelper = new LocalDatabaseHelper(this, null, null, 1);
         if(!localDatabaseHelper.isExisting()) {
             Intent toSignUpPage = new Intent(this, SignUpActivity.class);
@@ -29,5 +37,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Only one account possible", Toast.LENGTH_LONG).show();
         }
     }
+
 
 }
