@@ -7,7 +7,7 @@
     <color name="BackgroundWhiteColor">#FFFF</color>
     <color name="navigationViewBackground">#78ffffff</color>
     <color name="dashboardCardViewBackground">#55ffffff</color>
-    <color name="incomeExpense">#4db6ac</color>
+    <color name="incomeExpense">#1565C0</color>
     <color name="incomeExpenseSelected">#096888</color>
     <color name="transparent">#00000000</color>
     <color name="black">#000000</color>

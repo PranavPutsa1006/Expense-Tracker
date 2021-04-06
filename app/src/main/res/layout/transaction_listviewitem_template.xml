@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:background="#FFFFFF"
-    android:backgroundTint="#FFFFFF">
+    android:background="#1565C0"
+    android:backgroundTint="#1565C0">
 
     <TextView
         android:id="@+id/dateTextView"
@@ -15,10 +15,12 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-        android:background="#FFFFFF"
+        android:background="#1565C0"
         android:drawableTint="#FFFFFF"
+        android:fontFamily="@font/lato_bold"
         android:text="Date"
-        android:textColor="#000000" />
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/amountTextView"
@@ -29,8 +31,10 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
+        android:fontFamily="@font/lato_bold"
         android:text="Amount"
-        android:textColor="#000000" />
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/catagoryTextView"
@@ -42,7 +46,9 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
+        android:fontFamily="@font/lato_bold"
         android:text="Category"
-        android:textColor="#000000" />
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
 
 </RelativeLayout>
