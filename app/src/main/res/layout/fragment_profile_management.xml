@@ -13,7 +13,9 @@
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
 
         <TextView
             android:id="@+id/textView2"
@@ -176,15 +178,18 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="54dp"
-            android:background="#1565C0"
+            android:layout_centerInParent="true"
+            android:background="@drawable/login_button_background"
+            android:backgroundTint="#1565C0"
             android:fontFamily="@font/lato_bold"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:text="Update Profile"
             android:textSize="18sp"
-            tools:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF" />
 
     </RelativeLayout>
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -328,8 +333,11 @@
             android:paddingEnd="20dp"
             android:layout_marginTop="20dp"
             android:text="Update Profile"
-            android:textSize="15dp"
-            android:background="@drawable/login_button_background"/>
+            android:background="@drawable/login_button_background"
+            android:backgroundTint="#1565C0"
+            android:fontFamily="@font/lato_bold"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"/>
         <Button
             android:id="@+id/cancel"
             android:layout_width="wrap_content"
@@ -341,9 +349,12 @@
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:background="@drawable/login_button_background"
+            android:backgroundTint="#1565C0"
+            android:fontFamily="@font/lato_bold"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
             android:layout_below="@+id/confirmPasswordInputLayout"
-            android:text="Cancel"
-            android:textSize="15dp"/>
+            android:text="Cancel" />
 
     </RelativeLayout>
 </ViewSwitcher>
