@@ -3,7 +3,7 @@
     package="com.example.savss.expensetracker">
 
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS" android:protectionLevel="signature" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
 
     <application
@@ -27,6 +27,13 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_dashboard"> </activity>
+
+        <receiver android:name=".MessageReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>
