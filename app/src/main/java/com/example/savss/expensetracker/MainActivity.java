@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MessageListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 //        }else{
 //            setContentView(R.layout.activity_main);
 //        }
+        MessageReceiver.bindListener(this);
     }
 
     public void loginButton_onClick(View v){
@@ -52,6 +53,11 @@ public class MainActivity extends AppCompatActivity {
 //        }
         Intent toSignUpPage = new Intent(this, SignUpActivity.class);
         startActivity(toSignUpPage);
+    }
+
+    @Override
+    public void messageReceived(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 
 }
