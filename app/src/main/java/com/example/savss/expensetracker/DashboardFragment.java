@@ -50,6 +50,7 @@ public class DashboardFragment extends Fragment {
     private TextView fromDayTextView;
     private TextView toDayTextView;
     private ListView transactionListView;
+    private Spinner categorySpinner;
     private TransactionListViewAdapter transactionListViewAdapter;
     private BarChart customDatesBarChart;
 
@@ -63,12 +64,23 @@ public class DashboardFragment extends Fragment {
         dashboardView = inflater.inflate(R.layout.fragment_dashboard, container, false);
         localDatabaseHelper = new LocalDatabaseHelper(dashboardView.getContext(), null, null, 1);
 
+        initialise();
         setDatePicker();
         setLastMonthPieChart();
         displayTransactionlistview();
         setCustomDatesBarChart();
 
         return dashboardView;
+    }
+
+    private void initialise(){
+        categorySpinner = dashboardView.findViewById(R.id.categorySpinner);
+
+        ArrayList<String> categories = new ArrayList<>(UserData.categories);
+        categories.add(0, "All");
+        ArrayAdapter arrayAdapter = new ArrayAdapter(dashboardView.getContext(), R.layout.category_spinner_layout, categories.toArray());
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(arrayAdapter);
     }
 
     private void setCustomDatesBarChart() {

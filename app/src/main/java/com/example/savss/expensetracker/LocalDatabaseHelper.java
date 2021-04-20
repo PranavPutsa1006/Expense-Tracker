@@ -23,6 +23,7 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_USERS = "users";
     private static final String TABLE_CATEGORY = "categories";
     private static final String TABLE_TRANSACTION = "transactions";
+    private static final String TABLE_MESSAGE = "messages";
 
     public static final String USERS_ID = "user_id";
     public static final String USERS_NAME = "name";
@@ -44,6 +45,14 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
     public static final String TRANSACTION_AMOUNT = "amount";
     public static final String TRANSACTION_DESCRIPTION = "description";
 
+    public static final String MESSAGE_ID = "message_id";
+    public static final String MESSAGE = "message";
+    public static final String MESSAGE_DATE = "msg_date";
+    public static final String MESSAGE_FKEY_CATEGORY_ID = "category_id";
+    public static final String MESSAGE_TYPE = "type";
+    public static final String MESSAGE_AMOUNT = "amount";
+    public static final String MESSAGE_SHOPNAME = "shopname";
+
     public LocalDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
@@ -58,9 +67,13 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         String transactionTableCreationQuery = String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s INTEGER, %s DATETIME, %s INTEGER, %s TEXT, %s INTEGER, %s TEXT, FOREIGN KEY(%s) REFERENCES %s(%s), FOREIGN KEY (%s) REFERENCES %s(%s));",
                 TABLE_TRANSACTION, TRANSACTION_ID, TRANSACTION_FKEY_USERS_ID, TRANSACTION_DATE, TRANSACTION_FKEY_CATEGORY_ID, TRANSACTION_TYPE, TRANSACTION_AMOUNT, TRANSACTION_DESCRIPTION, TRANSACTION_FKEY_USERS_ID, TABLE_USERS, USERS_ID, TRANSACTION_FKEY_CATEGORY_ID, TABLE_CATEGORY, CATEGORY_ID);
 
+        String messageTableCreationQuery = String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s DATETIME, %s INTEGER, %s TEXT, %s INTEGER, %s TEXT, FOREIGN KEY(%s) REFERENCES %s(%s));",
+                TABLE_MESSAGE, MESSAGE_ID, MESSAGE, MESSAGE_DATE, MESSAGE_FKEY_CATEGORY_ID, MESSAGE_TYPE, MESSAGE_AMOUNT, MESSAGE_SHOPNAME, MESSAGE_FKEY_CATEGORY_ID, TABLE_CATEGORY, CATEGORY_ID);
+
         sqLiteDatabase.execSQL(userTableCreationQuery);
         sqLiteDatabase.execSQL(categoryTableCreationQuery);
         sqLiteDatabase.execSQL(transactionTableCreationQuery);
+        sqLiteDatabase.execSQL(messageTableCreationQuery);
 
         //String categoryAddQuery1 = String.format("INSERT INTO %s VALUES(1, 'Travel', 5000);",TABLE_CATEGORY);
         //sqLiteDatabase.compileStatement(categoryAddQuery1);
@@ -356,6 +369,42 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
+    public void addMessage(String userID, int categoryID, String message, String messageType, String amount, String shopname, Date mdate) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = simpleDateFormat.format(mdate);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MESSAGE, message);
+        contentValues.put(MESSAGE_DATE, date);
+        contentValues.put(MESSAGE_FKEY_CATEGORY_ID, String.valueOf(categoryID));
+        contentValues.put(MESSAGE_TYPE, messageType);
+        contentValues.put(MESSAGE_AMOUNT, amount);
+        contentValues.put(MESSAGE_SHOPNAME, shopname);
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        sqLiteDatabase.insert(TABLE_MESSAGE, null, contentValues);
+        sqLiteDatabase.close();
+        String transactionType = "";
+        if(messageType.toLowerCase().equals("credit")){
+            transactionType = "income";
+        }
+        else if(messageType.toLowerCase().equals("debit")){
+            transactionType = "expense";
+        }
+        addTransaction(userID, categoryID, transactionType, amount, "", mdate);
+
+    }
+
+//    public void updateMessageDetails(int messageID, MessageType type, String amount, int categoryID, Date date, String shopname) {
+//        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        String strDate = simpleDateFormat.format(date);
+//        String updateQuery = String.format("update %s set %s='%s', %s=%s, %s=%s, %s='%s', %s='%s' where %s = %s;",
+//                TABLE_MESSAGE, MESSAGE_TYPE, type.toString(), MESSAGE_AMOUNT, amount, MESSAGE_FKEY_CATEGORY_ID, categoryID,
+//                MESSAGE_DATE, strDate, MESSAGE_SHOPNAME, shopname, MESSAGE_ID, messageID);
+//        System.out.println(updateQuery);
+//        sqLiteDatabase.execSQL(updateQuery);
+//        sqLiteDatabase.close();
+//    }
+
     public void addTransaction(String userID, int categoryID, String transactionType, String amount, String description, Date tdate) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String date = simpleDateFormat.format(tdate);
@@ -542,6 +591,9 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         String fetchQuery = String.format("select distinct %s, (select sum(%s) from %s where %s = a.%s and %s = 'expense' and %s.%s between '%s' and '%s') from %s as a order by (%s);",
                 CATEGORY_ID, TRANSACTION_AMOUNT, TABLE_TRANSACTION, CATEGORY_ID, CATEGORY_ID, TRANSACTION_TYPE, TABLE_TRANSACTION, TRANSACTION_DATE, strLastMonthDate, strCurrentDate,
                 TABLE_TRANSACTION, CATEGORY_ID);
+//        String fetchQuery = String.format("select distinct %s, (select sum(%s) from %s where %s = a.%s and %s.%s = %s and %s = 'expense' and %s.%s between '%s' and '%s') from %s as a order by (%s);",
+//                CATEGORY_ID, TRANSACTION_AMOUNT, TABLE_TRANSACTION, CATEGORY_ID, CATEGORY_ID, TRANSACTION_TYPE, TABLE_USERS, USERS_ID, UserData.userID, TABLE_TRANSACTION, TRANSACTION_DATE, strLastMonthDate, strCurrentDate,
+//                TABLE_TRANSACTION, CATEGORY_ID);
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         Cursor c = sqLiteDatabase.rawQuery(fetchQuery, null);
         c.moveToFirst();
