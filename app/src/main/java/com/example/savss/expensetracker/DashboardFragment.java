@@ -23,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -43,6 +44,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 public class DashboardFragment extends Fragment {
     private LocalDatabaseHelper localDatabaseHelper;
@@ -57,7 +60,12 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -263,6 +271,7 @@ public class DashboardFragment extends Fragment {
     private AdapterView.OnItemClickListener transactionListViewItemClickListener = new AdapterView.OnItemClickListener() {
         private Dialog transactionDataPopUp;
         private TextView transactionIDTextView;
+        private Spinner messageBox;//del
         private TextView transactionTypeTextView;
         private TextView transactionTypeEdit;
         private TextView transactionAmountTextView;
@@ -271,7 +280,7 @@ public class DashboardFragment extends Fragment {
         private Spinner transactionCategorySpinner;
         private TextView transactionDateTextView;
         private TextView transactionDateEdit;
-        private TextView transactionDescriptionTextView;
+        //private TextView transactionDescriptionTextView;
         private EditText transactionDescriptionEditText;
         private Button closeButton;
         private Button editButton;
@@ -297,6 +306,8 @@ public class DashboardFragment extends Fragment {
             transactionDataPopUp.requestWindowFeature(Window.FEATURE_NO_TITLE);
             transactionDataPopUp.setContentView(R.layout.transaction_details_popup);
 
+
+
             transactionIDTextView = transactionDataPopUp.findViewById(R.id.transactionIDTextView);
             transactionTypeTextView = transactionDataPopUp.findViewById(R.id.transactionTypeTextView);
             transactionTypeEdit = transactionDataPopUp.findViewById(R.id.transactionTypeEdit);
@@ -304,9 +315,13 @@ public class DashboardFragment extends Fragment {
             transactionAmountEditText = transactionDataPopUp.findViewById(R.id.transactionAmountEditText);
             transactionCategoryTextView = transactionDataPopUp.findViewById(R.id.transactionCategoryTextView);
             transactionCategorySpinner = transactionDataPopUp.findViewById(R.id.transactionCategorySpinner);
+
+            messageBox= transactionDataPopUp.findViewById(R.id.MessageDropdown);
+
+
             transactionDateTextView = transactionDataPopUp.findViewById(R.id.transactionDateTextView);
             transactionDateEdit = transactionDataPopUp.findViewById(R.id.transactionDateEdit);
-            transactionDescriptionTextView = transactionDataPopUp.findViewById(R.id.transactionDescriptionTextView);
+           // transactionDescriptionTextView = transactionDataPopUp.findViewById(R.id.transactionDescriptionTextView);
             transactionDescriptionEditText = transactionDataPopUp.findViewById(R.id.transactionDescriptionEditText);
             closeButton = transactionDataPopUp.findViewById(R.id.closeButton);
             deleteButton = transactionDataPopUp.findViewById(R.id.deleteButton);
@@ -316,6 +331,31 @@ public class DashboardFragment extends Fragment {
             transactionCategoryViewSwitcher = transactionDataPopUp.findViewById(R.id.transactionCategoryViewSwitcher);
             transactionDateViewViewSwitcher = transactionDataPopUp.findViewById(R.id.transactionDateViewViewSwitcher);
             transactionDescriptionViewSwitcher = transactionDataPopUp.findViewById(R.id.transactionDescriptionViewSwitcher);
+
+
+
+            //messageBox.setOnItemSelectedListener(onItemSelected());
+
+            // Spinner Drop down elements
+            List<String> categories = new ArrayList<String>();
+
+
+            String ShopName[]={"Megha Bite N Slurp","Sachu Dine Spot","Sahana Aahaar","Shururu Curd Rice","Shreyas Salad paradise","Pra Pra Pizza Hut"};
+            Random rand = new Random();
+            String s=ShopName[rand.nextInt(6)];
+            categories.add(s+"\nHave patients message will appear ");
+
+
+            // Creating adapter for spinner
+            ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(transactionDataPopUp.getContext(), R.layout.category_spinner_layout, categories);
+            messageBox.setEnabled(false);
+            // Drop down layout style - list view with radio button
+            dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+            // attaching data adapter to spinner
+            messageBox.setAdapter(dataAdapter);
+
 
             closeButton.setOnClickListener(closeButtonClickListener);
             deleteButton.setOnClickListener(deleteButtonClickListener);
@@ -344,8 +384,20 @@ public class DashboardFragment extends Fragment {
             String transactionDateString = simpleDateFormat.format(transactionData.getDateTime());
 
             transactionDateTextView.setText(transactionDateString);
-            transactionDescriptionTextView.setText(transactionData.getDescription());
+            //transactionDescriptionTextView.setText(transactionData.getDescription());
         }
+
+
+//        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//            // On selecting a spinner item
+//            String item = parent.getItemAtPosition(position).toString();
+//
+//            // Showing selected spinner item
+//            Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+//        }
+//        public void onNothingSelected(AdapterView<?> arg0) {
+//            // TODO Auto-generated method stub
+//        }
 
         private void editTransactionDetails() {
             isEdited = true;
@@ -366,6 +418,7 @@ public class DashboardFragment extends Fragment {
 
             transactionDateEdit.setText(transactionDateString);
             transactionDescriptionEditText.setText(transactionData.getDescription());
+
         }
 
         private void setViewSwitcherView(int viewIntex) {

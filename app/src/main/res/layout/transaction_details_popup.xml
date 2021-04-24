@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:backgroundTint="#FFFFFF"
     android:foregroundTint="#FFFFFF"
-    android:paddingEnd="20dp">
+    android:paddingStart="30dp"
+    android:paddingLeft="30dp"
+    android:paddingTop="30dp"
+    android:paddingEnd="30dp"
+    android:paddingRight="30dp"
+    android:paddingBottom="30dp">
+
+
 
     <TextView
         android:id="@+id/transactionIDTextView"
@@ -106,7 +117,8 @@
         <Spinner
             android:id="@+id/transactionCategorySpinner"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:clickable="false" />
     </ViewSwitcher>
 
     <ViewSwitcher
@@ -140,16 +152,18 @@
             android:textSize="20sp" />
     </ViewSwitcher>
 
+
     <ViewSwitcher
         android:id="@+id/transactionDescriptionViewSwitcher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/transactionDateViewViewSwitcher"
         android:layout_marginStart="40dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="40dp">
+        android:layout_marginRight="0dp">
 
-        <TextView
+        <!--<TextView
             android:id="@+id/transactionDescriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -157,6 +171,14 @@
             android:gravity="center_horizontal"
             android:text="Description"
             android:textColor="#1565C0"
+            android:textSize="20sp" />-->
+
+        <Spinner
+            android:id="@+id/MessageDropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingBottom="40dp"
             android:textSize="20sp" />
 
         <EditText
@@ -210,3 +232,4 @@
         android:textColor="#FFFFFF" />
 
 </RelativeLayout>
+    </ScrollView>
