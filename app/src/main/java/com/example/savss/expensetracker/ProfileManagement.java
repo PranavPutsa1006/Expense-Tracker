@@ -129,6 +129,9 @@ public class ProfileManagement extends Fragment {
     private void setDOB() {
         dob = viewSwitcher.findViewById(R.id.textView10);
         dob.setText(UserData.dateOfBirth);
+        dob = viewSwitcher.findViewById(R.id.date);
+        dob.setText(UserData.dateOfBirth);
+
     }
 
     private void setPassword() {
