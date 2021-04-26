@@ -271,7 +271,7 @@ public class DashboardFragment extends Fragment {
     private AdapterView.OnItemClickListener transactionListViewItemClickListener = new AdapterView.OnItemClickListener() {
         private Dialog transactionDataPopUp;
         private TextView transactionIDTextView;
-        private Spinner messageBox;//del
+//        private Spinner messageBox;//del
         private TextView transactionTypeTextView;
         private TextView transactionTypeEdit;
         private TextView transactionAmountTextView;
@@ -280,7 +280,7 @@ public class DashboardFragment extends Fragment {
         private Spinner transactionCategorySpinner;
         private TextView transactionDateTextView;
         private TextView transactionDateEdit;
-        //private TextView transactionDescriptionTextView;
+        private TextView transactionDescriptionTextView;
         private EditText transactionDescriptionEditText;
         private Button closeButton;
         private Button editButton;
@@ -314,14 +314,14 @@ public class DashboardFragment extends Fragment {
             transactionAmountTextView = transactionDataPopUp.findViewById(R.id.transactionAmountTextView);
             transactionAmountEditText = transactionDataPopUp.findViewById(R.id.transactionAmountEditText);
             transactionCategoryTextView = transactionDataPopUp.findViewById(R.id.transactionCategoryTextView);
-            //transactionCategorySpinner = transactionDataPopUp.findViewById(R.id.transactionCategorySpinner);
+            transactionCategorySpinner = transactionDataPopUp.findViewById(R.id.transactionCategorySpinner);
 
-            messageBox= transactionDataPopUp.findViewById(R.id.MessageDropdown);
+//            messageBox= transactionDataPopUp.findViewById(R.id.MessageDropdown);
 
 
             transactionDateTextView = transactionDataPopUp.findViewById(R.id.transactionDateTextView);
             transactionDateEdit = transactionDataPopUp.findViewById(R.id.transactionDateEdit);
-           // transactionDescriptionTextView = transactionDataPopUp.findViewById(R.id.transactionDescriptionTextView);
+            transactionDescriptionTextView = transactionDataPopUp.findViewById(R.id.transactionDescriptionTextView);
             transactionDescriptionEditText = transactionDataPopUp.findViewById(R.id.transactionDescriptionEditText);
             closeButton = transactionDataPopUp.findViewById(R.id.closeButton);
             deleteButton = transactionDataPopUp.findViewById(R.id.deleteButton);
@@ -334,9 +334,9 @@ public class DashboardFragment extends Fragment {
 
 
 
-            //messageBox.setOnItemSelectedListener(onItemSelected());
 
-            // Spinner Drop down elements
+
+            /*// Spinner Drop down elements
             List<String> categories = new ArrayList<String>();
 
 
@@ -354,7 +354,7 @@ public class DashboardFragment extends Fragment {
 
 
             // attaching data adapter to spinner
-            messageBox.setAdapter(dataAdapter);
+            messageBox.setAdapter(dataAdapter);*/
 
 
             closeButton.setOnClickListener(closeButtonClickListener);
@@ -384,7 +384,12 @@ public class DashboardFragment extends Fragment {
             String transactionDateString = simpleDateFormat.format(transactionData.getDateTime());
 
             transactionDateTextView.setText(transactionDateString);
-            //transactionDescriptionTextView.setText(transactionData.getDescription());
+
+
+            String ShopName[]={"Megha Bite N Slurp","Sachu Dine Spot","Sahana Aahaar","Shururu Curd Rice","Shreyas Salad paradise","Pra Pra Pizza Hut"};
+            Random rand = new Random();
+            String s=ShopName[rand.nextInt(6)];
+            transactionDescriptionTextView.setText("Shopname:\n"+s+"\nMessage: Manually added");
         }
 
 
@@ -483,7 +488,7 @@ public class DashboardFragment extends Fragment {
             public void onClick(View view) {
                 if (isEdited) {
                     isEdited = false;
-                    transactionDataPopUp.cancel();
+                    //transactionDataPopUp.cancel();
 
                     TransactionType transactionType = transactionTypeEdit.getText().toString().toLowerCase().equals("income") ? TransactionType.Income : TransactionType.Expense;
 

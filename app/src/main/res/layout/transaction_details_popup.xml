@@ -158,12 +158,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/transactionDateViewViewSwitcher"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="10dp"
         android:layout_marginLeft="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="0dp">
 
-        <!--<TextView
+        <TextView
             android:id="@+id/transactionDescriptionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -171,15 +171,15 @@
             android:gravity="center_horizontal"
             android:text="Description"
             android:textColor="#1565C0"
-            android:textSize="20sp" />-->
+            android:textSize="20sp" />
 
-        <Spinner
+        <!--<Spinner
             android:id="@+id/MessageDropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:paddingBottom="40dp"
-            android:textSize="20sp" />
+            android:textSize="20sp" />-->
 
         <EditText
             android:id="@+id/transactionDescriptionEditText"
