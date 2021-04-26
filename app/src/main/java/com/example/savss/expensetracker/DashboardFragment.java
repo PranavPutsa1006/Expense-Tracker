@@ -82,13 +82,13 @@ public class DashboardFragment extends Fragment {
     }
 
     private void initialise(){
-        categorySpinner = dashboardView.findViewById(R.id.categorySpinner);
-
-        ArrayList<String> categories = new ArrayList<>(UserData.categories);
-        categories.add(0, "All");
-        ArrayAdapter arrayAdapter = new ArrayAdapter(dashboardView.getContext(), R.layout.category_spinner_layout, categories.toArray());
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        categorySpinner.setAdapter(arrayAdapter);
+//        categorySpinner = dashboardView.findViewById(R.id.categorySpinner);
+//
+//        ArrayList<String> categories = new ArrayList<>(UserData.categories);
+//        categories.add(0, "All");
+//        ArrayAdapter arrayAdapter = new ArrayAdapter(dashboardView.getContext(), R.layout.category_spinner_layout, categories.toArray());
+//        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        categorySpinner.setAdapter(arrayAdapter);
     }
 
     private void setCustomDatesBarChart() {
@@ -314,7 +314,7 @@ public class DashboardFragment extends Fragment {
             transactionAmountTextView = transactionDataPopUp.findViewById(R.id.transactionAmountTextView);
             transactionAmountEditText = transactionDataPopUp.findViewById(R.id.transactionAmountEditText);
             transactionCategoryTextView = transactionDataPopUp.findViewById(R.id.transactionCategoryTextView);
-            transactionCategorySpinner = transactionDataPopUp.findViewById(R.id.transactionCategorySpinner);
+            //transactionCategorySpinner = transactionDataPopUp.findViewById(R.id.transactionCategorySpinner);
 
             messageBox= transactionDataPopUp.findViewById(R.id.MessageDropdown);
 
@@ -343,7 +343,7 @@ public class DashboardFragment extends Fragment {
             String ShopName[]={"Megha Bite N Slurp","Sachu Dine Spot","Sahana Aahaar","Shururu Curd Rice","Shreyas Salad paradise","Pra Pra Pizza Hut"};
             Random rand = new Random();
             String s=ShopName[rand.nextInt(6)];
-            categories.add("Shopname:\n"+s+"\nMessage: Have patience message will appear ");
+            categories.add("Shopname:\n"+s+"\n Manually added");
 
 
             // Creating adapter for spinner
