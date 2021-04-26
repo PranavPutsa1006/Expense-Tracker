@@ -3,177 +3,177 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="#FFFFFF"
-    android:foregroundTint="#FFFFFF"
-    android:paddingStart="30dp"
-    android:paddingLeft="30dp"
-    android:paddingTop="30dp"
-    android:paddingEnd="30dp"
-    android:paddingRight="30dp"
-    android:paddingBottom="30dp">
 
-
-
-    <TextView
-        android:id="@+id/transactionIDTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="#ID"
-        android:textColor="#1565C0"
-        android:textColorHighlight="#000000"
-        android:textColorHint="#808080"
-        android:textColorLink="#808080"
-        android:textSize="24sp" />
-
-    <ViewSwitcher
-        android:id="@+id/transactionTypeViewSwitcher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/transactionIDTextView"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:background="#000000"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
         android:backgroundTint="#FFFFFF"
-        android:foregroundTint="#000000">
+        android:foregroundTint="#FFFFFF"
+        android:paddingStart="0dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="0dp"
+        android:paddingRight="0dp"
+        android:paddingBottom="0dp">
+
 
         <TextView
-            android:id="@+id/transactionTypeTextView"
+            android:id="@+id/transactionIDTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:fontFamily="@font/lato"
-            android:text="Transaction Type"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="#ID"
             android:textColor="#1565C0"
-            android:textSize="20sp" />
+            android:textColorHighlight="#000000"
+            android:textColorHint="#808080"
+            android:textColorLink="#808080"
+            android:textSize="24sp" />
 
-        <TextView
-            android:id="@+id/transactionTypeEdit"
+        <ViewSwitcher
+            android:id="@+id/transactionTypeViewSwitcher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/transactionIDTextView"
             android:layout_alignParentStart="true"
-            android:background="@drawable/login_button_background"
-            android:paddingStart="10dp"
-            android:paddingTop="5dp"
-            android:paddingEnd="10dp"
-            android:paddingBottom="5dp"
-            android:text="Transaction Type"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-    </ViewSwitcher>
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#000000"
+            android:backgroundTint="#FFFFFF"
+            android:foregroundTint="#000000">
 
-    <ViewSwitcher
-        android:id="@+id/transactionAmountViewSwitcher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/transactionIDTextView"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp">
+            <TextView
+                android:id="@+id/transactionTypeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:fontFamily="@font/lato"
+                android:text="Transaction Type"
+                android:textColor="#1565C0"
+                android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/transactionAmountTextView"
+            <TextView
+                android:id="@+id/transactionTypeEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/transactionIDTextView"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/login_button_background"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="Transaction Type"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </ViewSwitcher>
+
+        <ViewSwitcher
+            android:id="@+id/transactionAmountViewSwitcher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/lato_bold"
-            android:text="Amount"
-            android:textColor="#1565C0"
-            android:textSize="20sp" />
+            android:layout_below="@id/transactionIDTextView"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp">
 
-        <EditText
-            android:id="@+id/transactionAmountEditText"
+            <TextView
+                android:id="@+id/transactionAmountTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato_bold"
+                android:text="Amount"
+                android:textColor="#1565C0"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/transactionAmountEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+        </ViewSwitcher>
+
+        <ViewSwitcher
+            android:id="@+id/transactionCategoryViewSwitcher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Amount"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-    </ViewSwitcher>
+            android:layout_below="@id/transactionTypeViewSwitcher"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp">
 
-    <ViewSwitcher
-        android:id="@+id/transactionCategoryViewSwitcher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/transactionTypeViewSwitcher"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp">
+            <TextView
+                android:id="@+id/transactionCategoryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="Category"
+                android:textColor="#1565C0"
+                android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/transactionCategoryTextView"
+            <Spinner
+                android:id="@+id/transactionCategorySpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false" />
+        </ViewSwitcher>
+
+        <ViewSwitcher
+            android:id="@+id/transactionDateViewViewSwitcher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/lato"
-            android:text="Category"
-            android:textColor="#1565C0"
-            android:textSize="20sp" />
+            android:layout_below="@id/transactionCategoryViewSwitcher"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp">
 
-        <Spinner
-            android:id="@+id/transactionCategorySpinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="false" />
-    </ViewSwitcher>
+            <TextView
+                android:id="@+id/transactionDateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="01/02/2018"
+                android:textColor="#1565C0"
+                android:textSize="20sp" />
 
-    <ViewSwitcher
-        android:id="@+id/transactionDateViewViewSwitcher"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/transactionCategoryViewSwitcher"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp">
-
-        <TextView
-            android:id="@+id/transactionDateTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/lato"
-            android:text="01/02/2018"
-            android:textColor="#1565C0"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/transactionDateEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/signup_button_background"
-            android:paddingStart="10dp"
-            android:paddingTop="5dp"
-            android:paddingEnd="10dp"
-            android:paddingBottom="5dp"
-            android:text="01/02/2018"
-            android:textSize="20sp" />
-    </ViewSwitcher>
+            <TextView
+                android:id="@+id/transactionDateEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/signup_button_background"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
+                android:text="01/02/2018"
+                android:textSize="20sp" />
+        </ViewSwitcher>
 
 
-    <ViewSwitcher
-        android:id="@+id/transactionDescriptionViewSwitcher"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/transactionDateViewViewSwitcher"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="0dp">
-
-        <TextView
-            android:id="@+id/transactionDescriptionTextView"
+        <ViewSwitcher
+            android:id="@+id/transactionDescriptionViewSwitcher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/lato"
-            android:gravity="center_horizontal"
-            android:text="Description"
-            android:textColor="#1565C0"
-            android:textSize="20sp" />
+            android:layout_below="@+id/transactionDateViewViewSwitcher"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="0dp">
 
-        <!--<Spinner
+            <TextView
+                android:id="@+id/transactionDescriptionTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:gravity="center_horizontal"
+                android:text="Description"
+                android:textColor="#1565C0"
+                android:textSize="20sp" />
+
+            <!--<Spinner
             android:id="@+id/MessageDropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -181,55 +181,54 @@
             android:paddingBottom="40dp"
             android:textSize="20sp" />-->
 
-        <EditText
-            android:id="@+id/transactionDescriptionEditText"
-            android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/transactionDescriptionEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Description"
+                android:textSize="20sp" />
+        </ViewSwitcher>
+
+        <Button
+            android:id="@+id/closeButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="Description"
-            android:textSize="20sp" />
-    </ViewSwitcher>
+            android:layout_below="@id/transactionDescriptionViewSwitcher"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="#1565C0"
+            android:fontFamily="@font/lato_bold"
+            android:foregroundTint="#00BCD4"
+            android:text="Close"
+            android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/closeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/transactionDescriptionViewSwitcher"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="#1565C0"
-        android:fontFamily="@font/lato_bold"
-        android:foregroundTint="#00BCD4"
-        android:text="Close"
-        android:textColor="#FFFFFF" />
+        <Button
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/transactionDescriptionViewSwitcher"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="#EF5350"
+            android:fontFamily="@font/lato_bold"
+            android:text="Delete"
+            android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/deleteButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/transactionDescriptionViewSwitcher"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="#EF5350"
-        android:fontFamily="@font/lato_bold"
-        android:text="Delete"
-        android:textColor="#FFFFFF" />
+        <Button
+            android:id="@+id/editButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/transactionDescriptionViewSwitcher"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="#1565C0"
+            android:fontFamily="@font/lato_bold"
+            android:text="Edit"
+            android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/editButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/transactionDescriptionViewSwitcher"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="#1565C0"
-        android:fontFamily="@font/lato_bold"
-        android:text="Edit"
-        android:textColor="#FFFFFF" />
-
-</RelativeLayout>
+    </RelativeLayout>
     </ScrollView>
