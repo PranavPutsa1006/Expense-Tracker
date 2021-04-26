@@ -23,10 +23,12 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
+                android:clickable="true"
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
                 android:background="#DAE8FC"
-                android:stretchColumns="0,1"> </TableLayout>
+                android:stretchColumns="0,1"
+                android:focusable="true"> </TableLayout>
 
             <Button
                 android:id="@+id/addCategory"

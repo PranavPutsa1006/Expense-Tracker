@@ -24,6 +24,7 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_CATEGORY = "categories";
     private static final String TABLE_TRANSACTION = "transactions";
     private static final String TABLE_MESSAGE = "messages";
+    private static final String TABLE_SHOP = "shops";
 
     public static final String USERS_ID = "user_id";
     public static final String USERS_NAME = "name";
@@ -53,6 +54,10 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
     public static final String MESSAGE_AMOUNT = "amount";
     public static final String MESSAGE_SHOPNAME = "shopname";
 
+    public static final String SHOP_ID = "shop_id";
+    public static final String SHOP_NAME = "shop_name";
+    public static final String SHOP_FKEY_CATEGORY_ID = "category_id";
+
     public LocalDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
@@ -70,10 +75,14 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         String messageTableCreationQuery = String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s DATETIME, %s INTEGER, %s TEXT, %s INTEGER, %s TEXT, FOREIGN KEY(%s) REFERENCES %s(%s));",
                 TABLE_MESSAGE, MESSAGE_ID, MESSAGE, MESSAGE_DATE, MESSAGE_FKEY_CATEGORY_ID, MESSAGE_TYPE, MESSAGE_AMOUNT, MESSAGE_SHOPNAME, MESSAGE_FKEY_CATEGORY_ID, TABLE_CATEGORY, CATEGORY_ID);
 
+        String shopTableCreationQuery = String.format("CREATE TABLE %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s INTEGER, FOREIGN KEY(%s) REFERENCES %s(%s));",
+                TABLE_SHOP, SHOP_ID, SHOP_NAME, SHOP_FKEY_CATEGORY_ID, SHOP_FKEY_CATEGORY_ID, TABLE_CATEGORY, CATEGORY_ID);
+
         sqLiteDatabase.execSQL(userTableCreationQuery);
         sqLiteDatabase.execSQL(categoryTableCreationQuery);
         sqLiteDatabase.execSQL(transactionTableCreationQuery);
         sqLiteDatabase.execSQL(messageTableCreationQuery);
+        sqLiteDatabase.execSQL(shopTableCreationQuery);
 
         //String categoryAddQuery1 = String.format("INSERT INTO %s VALUES(1, 'Travel', 5000);",TABLE_CATEGORY);
         //sqLiteDatabase.compileStatement(categoryAddQuery1);
@@ -349,17 +358,102 @@ public class LocalDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db3 = getWritableDatabase();
         ContentValues contentValues3 = new ContentValues();
         contentValues3.put("category_id",4);
-        contentValues3.put("name","Utility bills");
+        contentValues3.put("name","Clothing");
         contentValues3.put("budget",8000);
         db3.insert(TABLE_CATEGORY, null, contentValues3);
         db3.close();
         SQLiteDatabase db4 = getWritableDatabase();
         ContentValues contentValues4 = new ContentValues();
         contentValues4.put("category_id",5);
-        contentValues4.put("name","Rent");
-        contentValues4.put("budget",15000);
+        contentValues4.put("name","Entertainment");
+        contentValues4.put("budget",7000);
         db4.insert(TABLE_CATEGORY, null, contentValues4);
         db4.close();
+
+        SQLiteDatabase db5 = getWritableDatabase();
+        ContentValues contentValues5 = new ContentValues();
+        contentValues5.put(SHOP_ID,1);
+        contentValues5.put(SHOP_NAME,"Apollo");
+        contentValues5.put(CATEGORY_ID,2);
+        db5.insert(TABLE_SHOP, null, contentValues);
+        db5.close();
+        SQLiteDatabase db6 = getWritableDatabase();
+        ContentValues contentValues6 = new ContentValues();
+        contentValues6.put(SHOP_ID,2);
+        contentValues6.put(SHOP_NAME,"MedPlus");
+        contentValues6.put(CATEGORY_ID,2);
+        db6.insert(TABLE_SHOP, null, contentValues);
+        db6.close();
+        SQLiteDatabase db7 = getWritableDatabase();
+        ContentValues contentValues7 = new ContentValues();
+        contentValues7.put(SHOP_ID,3);
+        contentValues7.put(SHOP_NAME,"A2B");
+        contentValues7.put(CATEGORY_ID,3);
+        db7.insert(TABLE_SHOP, null, contentValues);
+        db7.close();
+        SQLiteDatabase db8 = getWritableDatabase();
+        ContentValues contentValues8 = new ContentValues();
+        contentValues8.put(SHOP_ID,4);
+        contentValues8.put(SHOP_NAME,"Kanti's");
+        contentValues8.put(CATEGORY_ID,3);
+        db8.insert(TABLE_SHOP, null, contentValues);
+        db8.close();
+        SQLiteDatabase db9 = getWritableDatabase();
+        ContentValues contentValues9 = new ContentValues();
+        contentValues9.put(SHOP_ID,5);
+        contentValues9.put(SHOP_NAME,"Pantaloons");
+        contentValues9.put(CATEGORY_ID,4);
+        db9.insert(TABLE_SHOP, null, contentValues);
+        db9.close();
+        SQLiteDatabase db10 = getWritableDatabase();
+        ContentValues contentValues10 = new ContentValues();
+        contentValues10.put("category_id",6);
+        contentValues10.put("name","Electronics");
+        contentValues10.put("budget",15000);
+        db10.insert(TABLE_CATEGORY, null, contentValues4);
+        db10.close();
+        SQLiteDatabase db11 = getWritableDatabase();
+        ContentValues contentValues11 = new ContentValues();
+        contentValues11.put(SHOP_ID,6);
+        contentValues11.put(SHOP_NAME,"Reliance Trends");
+        contentValues11.put(CATEGORY_ID,4);
+        db11.insert(TABLE_SHOP, null, contentValues4);
+        db11.close();
+        SQLiteDatabase db12 = getWritableDatabase();
+        ContentValues contentValues12 = new ContentValues();
+        contentValues12.put(SHOP_ID,7);
+        contentValues12.put(SHOP_NAME,"Zomato");
+        contentValues12.put(CATEGORY_ID,3);
+        db12.insert(TABLE_SHOP, null, contentValues4);
+        db12.close();
+        SQLiteDatabase db13 = getWritableDatabase();
+        ContentValues contentValues13 = new ContentValues();
+        contentValues13.put(SHOP_ID,8);
+        contentValues13.put(SHOP_NAME,"Myntra");
+        contentValues13.put(CATEGORY_ID,4);
+        db13.insert(TABLE_SHOP, null, contentValues4);
+        db13.close();
+        SQLiteDatabase db14 = getWritableDatabase();
+        ContentValues contentValues14 = new ContentValues();
+        contentValues14.put(SHOP_ID,9);
+        contentValues14.put(SHOP_NAME,"Amazon");
+        contentValues14.put(CATEGORY_ID,4);
+        db14.insert(TABLE_SHOP, null, contentValues4);
+        db14.close();
+        SQLiteDatabase db15 = getWritableDatabase();
+        ContentValues contentValues15 = new ContentValues();
+        contentValues15.put(SHOP_ID,10);
+        contentValues15.put(SHOP_NAME,"Amazon");
+        contentValues15.put(CATEGORY_ID,6);
+        db15.insert(TABLE_SHOP, null, contentValues4);
+        db15.close();
+        SQLiteDatabase db16 = getWritableDatabase();
+        ContentValues contentValues16 = new ContentValues();
+        contentValues16.put(SHOP_ID,11);
+        contentValues16.put(SHOP_NAME,"Flipkart");
+        contentValues16.put(CATEGORY_ID,4);
+        db16.insert(TABLE_SHOP, null, contentValues4);
+        db16.close();
         sqLiteDatabase.close();
     }
     @Override
