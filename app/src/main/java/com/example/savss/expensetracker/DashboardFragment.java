@@ -343,7 +343,7 @@ public class DashboardFragment extends Fragment {
             String ShopName[]={"Megha Bite N Slurp","Sachu Dine Spot","Sahana Aahaar","Shururu Curd Rice","Shreyas Salad paradise","Pra Pra Pizza Hut"};
             Random rand = new Random();
             String s=ShopName[rand.nextInt(6)];
-            categories.add("Shopname:\n"+s+"\n Manually added");
+            categories.add("Shopname:\n"+s+"\nMessage: Manually added");
 
 
             // Creating adapter for spinner
